@@ -5,8 +5,7 @@ Python testing tasks.
 g = require "gulp"
 virtualenv = require "./virtualenv"
 
-generate_python_task = (
-package_dest, require_syntax=true,
+module.exports = (package_dest, require_syntax=true,
 require_complex=true, require_mentain=true) ->
   unit_test_dependencies = []
   if require_syntax_check
