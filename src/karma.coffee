@@ -33,13 +33,21 @@ config =
     "karma-sinon"
   ]
 
-module.exports = (packageName, third_party, frontendOnly=true) ->
-  jsFiles = "**/js/#{if frontendOnly "" else "frontend/"}**/*.js"
-  srcName = [
-    "#{package}/**/js/#{if frontendOnly "" else "frontend/"}**/*.js",
-    "tests/**/js/#{if frontendOnly "" else "frontend/"}unit/**/*.js"
+module.exports = (packageName, thirdParty, thirdPartyBlackLists,
+frontendOnly=true, frontendDir="frontend") ->
+  thirdPartyBlackLists = thirdPartyBlackLists or [
+    "third_party", "thirdParty", "thirdparty", "3rdparty", "3rd_party",
+    "3rdParty", "external"
   ]
-  srcName = srcName.concat third_party
+  blacklist = "!(#{thirdPartyBlackLists.join '|'})"
+  frontend = if frontendOnly then "" else "#{frontendDir}/"
+  srcName = [
+    "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js",
+    "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee",
+    "tests/**/js/#{frontend}unit/**/*.js",
+    "tests/**/coffee/#{frontend}unit/**/*.coffee"
+  ]
+  srcName = srcName.concat thirdParty
   g.task "karma.server", ->
     g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
