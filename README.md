@@ -9,9 +9,9 @@ environment creation. I don't think this situation is healthy, and I felt
 I needed something like "Packaged gulp tasks" and so on.
 
 ## Notice when you use this script.
-Please don't use this script unless you know what this script is what you are
-doing. This script contains a lot of kludge. For listing tasks, you can use
-[gulp-help].
+Don't use this script unless you know what this script is and
+what you are doing. This script contains a lot of kludge. For listing tasks,
+you can use [gulp-help].
 
 [gulp-help]: https://github.com/chmontgomery/gulp-help
 

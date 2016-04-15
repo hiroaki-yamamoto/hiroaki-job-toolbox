@@ -7,6 +7,8 @@ karma = require "gulp-karma-runner"
 plumber = require "gulp-plumber"
 notify = require "gulp-notify"
 
+bl = require("./helper").thirdPartyBlackLists
+
 config =
   "basePath": "./"
   "quiet": true
@@ -33,12 +35,9 @@ config =
     "karma-sinon"
   ]
 
-module.exports = (packageName, thirdParty, thirdPartyBlackLists,
+module.exports = (packageName, thirdParty, blacklist,
 frontendOnly=true, frontendDir="frontend") ->
-  thirdPartyBlackLists = thirdPartyBlackLists or [
-    "third_party", "thirdParty", "thirdparty", "3rdparty", "3rd_party",
-    "3rdParty", "external"
-  ]
+  thirdPartyBlackLists = bl.concat(blacklist)
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
