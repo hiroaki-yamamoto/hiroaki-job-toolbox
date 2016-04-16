@@ -4,7 +4,7 @@
 This scirpt contains scripts that I'm usually using at my work and hobby.
 
 ## Why?
-Because I don't like doing same thing, and I noticed I ate all the day for
+Because I don't like doing same thing, and I found I ate all the day for
 environment creation. I don't think this situation is healthy, and I felt
 I needed something like "Packaged gulp tasks" and so on.
 
@@ -14,6 +14,12 @@ what you are doing. This script contains a lot of kludge. For listing tasks,
 you can use [gulp-help].
 
 [gulp-help]: https://github.com/chmontgomery/gulp-help
+
+## How to use it
+1. Read [src]
+2. Read [src] twice (Reading code is the most important than others.)
+3. Understand [src]
+4. Understand [src] twice (Understanding code is important to use.)
 
 ## License (MIT)
 
