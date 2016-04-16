@@ -11,11 +11,11 @@ plumber = require "gulp-plumber"
 sourcemaps = require "gulp-sourcemaps"
 uglify = require "gulp-uglify"
 
-bl = require("./helper").thirdPartyBlackLists
+helper = require "./helper"
 
 module.exports = (pkgname, dest, blacklist, dependencies=[],
 frontendOnly=true, frontendDir="frontend") ->
-  thirdPartyBlackLists = bl.concat blacklist
+  thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
@@ -34,9 +34,11 @@ frontendOnly=true, frontendDir="frontend") ->
     )).pipe(
       lint.reporter 'coffeelint-stylish'
     ).pipe(lint.reporter 'fail')
-    if process.env.CI or process.env.mode is "production"
+    if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.init())
-    pipe = pipe.pipe(coffee()).pipe(concat("./assets.js")).pipe(uglify())
-    if process.env.CI or process.env.mode is "production"
+    pipe = pipe.pipe(coffee()).pipe(concat("./assets.js")).pipe(uglify(
+      "mangle": true
+    ))
+    if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest dest)

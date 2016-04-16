@@ -16,13 +16,13 @@ module.exports = (pkgname, blacklist, dest) ->
     pipe = g.src("#{pkgname}/main.less").pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     )
-    if process.env.CI or process.env.mode is "production"
+    if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.init())
     pipe = pipe.pipe(
       less("plugins": [
         new CleanLESS(("advanced": true ,"rebase": true))
       ])
     ).pipe(autoprefix()).pipe(rename "basename": "assets")
-    if process.env.CI or process.env.mode is "production"
+    if not heler.isProduction
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest(dest))

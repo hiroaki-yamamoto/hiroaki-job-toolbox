@@ -5,9 +5,10 @@ concat = require "gulp-concat"
 linter = require "gulp-eslint"
 plumber = require "gulp-plumber"
 notify = require "gulp-notify"
+sourcemaps = require "gulp-sourcemaps"
 uglify = require "gulp-uglify"
 
-helper = require("./helper")
+helper = require "./helper"
 
 module.exports = (pkgname, dest, blacklist, dependencies=[],
 frontendOnly=true, frontendDir="frontend") ->
@@ -16,6 +17,19 @@ frontendOnly=true, frontendDir="frontend") ->
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js"
 
-  g.src(srcName).pipe(
+  pipe = g.src(srcName).pipe(
     plumber(errorHandler: notify.onError '<%= error.message %>')
-  ).pipe(linter("configFile": "./eslint.js")).pipe(concat("assets.js"))
+  ).pipe(
+    linter("configFile": "./eslint.js")
+  ).pipe(linter.format()).pipe(linter.failAfterError())
+
+  if not helper.isProduction
+    pipe = pipe.pipe(sourcemaps.init())
+  pipe = pipe.pipe(
+    concat("assets.js")
+  ).pipe(uglify "mangle": true)
+
+  if not helper.isProduction
+    pipe = pipe.pipe(sourcemaps.write())
+
+  pipe = pipe.pipe(g.dest dest)
