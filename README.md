@@ -8,7 +8,7 @@ Because I don't like doing same thing, and I noticed I ate all the day for
 environment creation. I don't think this situation is healthy, and I felt
 I needed something like "Packaged gulp tasks" and so on.
 
-## Notice when you use this script.
+## Notice when you use this script
 Don't use this script unless you know what this script is and
 what you are doing. This script contains a lot of kludge. For listing tasks,
 you can use [gulp-help].

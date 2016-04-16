@@ -22,7 +22,7 @@ module.exports = (pkgname, blacklist, dest) ->
       less("plugins": [
         new CleanLESS(("advanced": true ,"rebase": true))
       ])
-    ).pipe(autoprefix())
+    ).pipe(autoprefix()).pipe(rename "basename": "assets")
     if process.env.CI or process.env.mode is "production"
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest(dest))
