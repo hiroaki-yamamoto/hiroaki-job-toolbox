@@ -10,9 +10,9 @@ CleanLESS = require "less-plugin-clean-css"
 
 helper = require "./helper"
 
-module.exports = (pkgname, blacklist, dest) ->
+module.exports = (taskPrefix, pkgname, blacklist, dest) ->
   thirdPartyBlackLists = helper.blacklist.concat blacklist
-  g.task "less", ->
+  g.task "#{taskPrefix}less", ->
     pipe = g.src("#{pkgname}/main.less").pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     )

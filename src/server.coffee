@@ -5,16 +5,16 @@ childProcess = require "child_process"
 g = require "gulp"
 q = require "q"
 
-server = undefined
+module.exports = (taskPrefix) ->
+  server = undefined
+  g.task "#{taskPrefix}server.allocate", ->
+    q.nfcall(freeport).then (port) ->
+      process.env.port = port.toString()
+      server = childProcess.spawn(
+        "./server", ["testing", "localhost", port.toString()],
+        "stdio": "ignore"
+      )
 
-g.task "server.allocate", ->
-  q.nfcall(freeport).then (port) ->
-    process.env.port = port.toString()
-    server = childProcess.spawn(
-      "./server", ["testing", "localhost", port.toString()],
-      "stdio": "ignore"
-    )
-
-g.task "server.terminate", ->
-  server.kill "SIGHUP"
-  delete process.env.port
+  g.task "#{taskPrefix}server.terminate", ->
+    server.kill "SIGHUP"
+    delete process.env.port

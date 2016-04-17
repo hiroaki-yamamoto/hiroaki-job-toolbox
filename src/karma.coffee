@@ -35,7 +35,7 @@ config =
     "karma-sinon"
   ]
 
-module.exports = (packageName, thirdParty, blacklist,
+module.exports = (taskPrefix, packageName, thirdParty, blacklist,
 frontendOnly=true, frontendDir="frontend") ->
   thirdPartyBlackLists = bl.concat(blacklist)
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
@@ -47,11 +47,11 @@ frontendOnly=true, frontendDir="frontend") ->
     "tests/**/coffee/#{frontend}unit/**/*.coffee"
   ]
   srcName = srcName.concat thirdParty
-  g.task "karma.server", ->
+  g.task "#{taskPrefix}karma.server", ->
     g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     ).pipe(karma.server config)
-  g.task "karma.runner", ->
+  g.task "#{taskPrefix}karma.runner", ->
     g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     ).pipe(karma.runner config)

@@ -10,26 +10,27 @@ uglify = require "gulp-uglify"
 
 helper = require "./helper"
 
-module.exports = (pkgname, dest, blacklist, dependencies=[],
+module.exports = (taskPrefix, pkgname, dest, blacklist, dependencies=[],
 frontendOnly=true, frontendDir="frontend") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js"
 
-  pipe = g.src(srcName).pipe(
-    plumber(errorHandler: notify.onError '<%= error.message %>')
-  ).pipe(
-    linter("configFile": "./eslint.js")
-  ).pipe(linter.format()).pipe(linter.failAfterError())
+  g.task "#{taskPrefix}js", dependencies, ->
+    pipe = g.src(srcName).pipe(
+      plumber(errorHandler: notify.onError '<%= error.message %>')
+    ).pipe(
+      linter("configFile": "./eslint.js")
+    ).pipe(linter.format()).pipe(linter.failAfterError())
 
-  if not helper.isProduction
-    pipe = pipe.pipe(sourcemaps.init())
-  pipe = pipe.pipe(
-    concat("assets.js")
-  ).pipe(uglify "mangle": true)
+    if not helper.isProduction
+      pipe = pipe.pipe(sourcemaps.init())
+    pipe = pipe.pipe(
+      concat("assets.js")
+    ).pipe(uglify "mangle": true)
 
-  if not helper.isProduction
-    pipe = pipe.pipe(sourcemaps.write())
+    if not helper.isProduction
+      pipe = pipe.pipe(sourcemaps.write())
 
-  pipe = pipe.pipe(g.dest dest)
+    pipe = pipe.pipe(g.dest dest)

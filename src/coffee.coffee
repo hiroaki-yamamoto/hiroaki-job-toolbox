@@ -13,14 +13,14 @@ uglify = require "gulp-uglify"
 
 helper = require "./helper"
 
-module.exports = (pkgname, dest, blacklist, dependencies=[],
+module.exports = (taskPrefix, pkgname, dest, blacklist, dependencies=[],
 frontendOnly=true, frontendDir="frontend") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
 
-  gulp.task "coffee", dependencies, ->
+  gulp.task "#{taskPrefix}coffee", dependencies, ->
     pipe = g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     ).pipe(lint(
