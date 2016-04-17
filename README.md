@@ -26,6 +26,8 @@ you can use [gulp-help].
 3. Understand [src]
 4. Understand [src] twice (Understanding code is important to use.)
 
+[src]: ./src
+
 ## License (MIT)
 
 The MIT License (MIT)
