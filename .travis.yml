@@ -1,6 +1,7 @@
 language: "node_js"
 node_js:
   - "5"
+cache: npm
 deploy:
   - provider: "npm"
     api_key: "YOUR_API_KEY"
