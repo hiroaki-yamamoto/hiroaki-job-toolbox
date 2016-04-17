@@ -1,0 +1,22 @@
+language: "node_js"
+node_js:
+  - "5"
+deploy:
+  - provider: "npm"
+    api_key: "YOUR_API_KEY"
+    email: hiroaki@hysoftware.net
+    skip_cleanup: true
+    api_key:
+      secure: >-
+        i01qUeQ+B6EY9nmAmSUXg8rQMkV/feeaF5JBZBd3sF7LgtVIfcMM69bcUTk/4TgjKMrYWw
+        IUFSoNAVQIZ7Tn1DP6noGyXiqx45dDRPt6KGexlvV9KRGFbmjXU9W8AnlPM2g9zGN6p+7L
+        RTnX/iP5q6Z/sb/F/UqfVOmWgEhehWVjR23DgHFvUaPe8AMgq/wwqNV3Slc47PBwm9BpER
+        KnKUmLaX/DUzidfJKYYuLBen5Qh2Xh8Kb9on5AuNseh/Ce6RIEImvbxUYXWVDx2Q8FXRF4
+        sMVtcaJraELuLDWnSCdGM8+m+6MqxVYfmuqWHhJzwf7IE21oXHglV1S1bJJCsT4Wp2P9Lf
+        ZQNwO0NgzyuLbcNfa7jTmJNTxnfgeHVXo+D6to4BPoa/yBEc0D5DuzFeaMW8JW4xcHKeJ+
+        X+CYdo6/a0yi9am3rSTXYmjs9fSyKHRXXgLVGfhJa1OIbPbrcP09h9EJa5hx4TzA/pB+/O
+        YXeUSnH4PUa/GMtrqo25E6bfFtD04oYP7dDZRQ8vA+Rl+DkwYREKYB+IRay/Ugt7pwIrr0
+        8kSp65RW0tsO3RTqMqFa45qRO1iOkEkVI/3yh+LiP5RD7iSesjJ41nP4bsp383oNFFv/OC
+        IryNIbwK2qOFEDqd6V9OP7StVfjDd4siNbhSu5pfTJSoz7HajW0vI=
+    on:
+      tags: true
