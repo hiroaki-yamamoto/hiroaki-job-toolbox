@@ -7,16 +7,6 @@ deploy:
     email: hiroaki@hysoftware.net
     skip_cleanup: true
     api_key:
-      secure: >-
-        i01qUeQ+B6EY9nmAmSUXg8rQMkV/feeaF5JBZBd3sF7LgtVIfcMM69bcUTk/4TgjKMrYWw
-        IUFSoNAVQIZ7Tn1DP6noGyXiqx45dDRPt6KGexlvV9KRGFbmjXU9W8AnlPM2g9zGN6p+7L
-        RTnX/iP5q6Z/sb/F/UqfVOmWgEhehWVjR23DgHFvUaPe8AMgq/wwqNV3Slc47PBwm9BpER
-        KnKUmLaX/DUzidfJKYYuLBen5Qh2Xh8Kb9on5AuNseh/Ce6RIEImvbxUYXWVDx2Q8FXRF4
-        sMVtcaJraELuLDWnSCdGM8+m+6MqxVYfmuqWHhJzwf7IE21oXHglV1S1bJJCsT4Wp2P9Lf
-        ZQNwO0NgzyuLbcNfa7jTmJNTxnfgeHVXo+D6to4BPoa/yBEc0D5DuzFeaMW8JW4xcHKeJ+
-        X+CYdo6/a0yi9am3rSTXYmjs9fSyKHRXXgLVGfhJa1OIbPbrcP09h9EJa5hx4TzA/pB+/O
-        YXeUSnH4PUa/GMtrqo25E6bfFtD04oYP7dDZRQ8vA+Rl+DkwYREKYB+IRay/Ugt7pwIrr0
-        8kSp65RW0tsO3RTqMqFa45qRO1iOkEkVI/3yh+LiP5RD7iSesjJ41nP4bsp383oNFFv/OC
-        IryNIbwK2qOFEDqd6V9OP7StVfjDd4siNbhSu5pfTJSoz7HajW0vI=
+      secure: "bXtRraye9Dpw0UjtBSSn1rBjQ8OkNI189SPaS+g3DJQm/DWDJCe/Oki/eV4XbkA42OcJ3jtLVfGnkvAm9z+0c+QJZucvGqvVF/5kiEoVRsHgCHCB+jVcUwMFsWq7v8yeACNKPEXMPYfRJhquk/AvqLR0CR5ts6AReCuGlE/MoiIP1XEifjyqlmcYGPQGew+qrRJ83hUVYhy80K0U44x6QPoPP8kstymMl/RXS7OeTG3k8iDWKUvzAl0o8zjXduAF9jA7OnPHQAyFrNU1XdDTSZov2LFU4Zt0uMMol2z4JhzdV6g3W+Xp6Epb1uFSQqrU1RTZ1J1aVMefIq30ArophgfHAQae2LRjjl5xpRm29tUOWrW1R2+lZSC4lFOJsgqvD0kUF3vMuvaVUIxXdo5QAj2h18K58w1cd0LeLG5YDKPNIt6vWx4UxqRitginhPisRCSL2vF3P1TJf9sLBwq0oDXXPru6lP8Ey93yxdnISFikiwmdfjj+d3/UwVu5ck8YtgCOOWAl5rsYnppJnwq8QvBW3n1BRvIgmgDaixtM9Kco4qI4/5x/7rBc8X8Q0R5iOe3+aQCnVotM9mbHfxAJem4nFQr6ilE3FFwlhhfw9STR/sh2coObXmflMlukf+0dNY/r3oGNmcZcf+k+TY3qMQ9bQpbdTOPC/PwS+iu7P6g="
     on:
       tags: true
