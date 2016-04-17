@@ -4,7 +4,7 @@
   "description": "Toolboxes that hyamamoto usually using",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp compile"
   },
   "repository": {
     "type": "git",
