@@ -1,5 +1,10 @@
 # Hiroaki's toolbox
 
+[![Build Status]][Build Link]
+
+[Build Status]: https://travis-ci.org/hiroaki-yamamoto/hiroaki-job-toolbox.svg?branch=master
+[Build Link]: https://travis-ci.org/hiroaki-yamamoto/hiroaki-job-toolbox
+
 ## What this?
 This scirpt contains scripts that I'm usually using at my work and hobby.
 
