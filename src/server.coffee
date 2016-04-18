@@ -2,6 +2,7 @@
 
 
 childProcess = require "child_process"
+freeport = require "freeport"
 g = require "gulp"
 q = require "q"
 

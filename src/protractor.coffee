@@ -2,7 +2,6 @@
 Protractor gulp
 ###
 
-freeport = require "freeport"
 g = require "gulp"
 
 plumber = require "gulp-plumber"
