@@ -1,7 +1,7 @@
 # Gulpfile selfcheck task
 
 g = require "gulp"
-coffeelint = require "gulp-conffeelint"
+coffeelint = require "gulp-coffeelint"
 eslint = require "gulp-eslint"
 notify = require "gulp-notify"
 plumber = require "gulp-plumber"
