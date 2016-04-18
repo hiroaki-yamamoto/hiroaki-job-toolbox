@@ -1,6 +1,6 @@
 {
   "name": "hyamamoto-job-toolbox",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Toolboxes that hyamamoto usually using",
   "main": "lib/main.js",
   "scripts": {

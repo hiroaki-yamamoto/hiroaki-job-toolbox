@@ -5,7 +5,7 @@ g = require "gulp"
 
 concat = require "gulp-concat"
 coffee = require "gulp-coffee"
-linter = require "gulp-coffeelint"
+lint = require "gulp-coffeelint"
 notify = require "gulp-notify"
 plumber = require "gulp-plumber"
 sourcemaps = require "gulp-sourcemaps"
