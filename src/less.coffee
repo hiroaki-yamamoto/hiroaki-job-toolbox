@@ -24,6 +24,6 @@ module.exports = (taskPrefix, pkgname, blacklist, dest) ->
         new CleanLESS(("advanced": true ,"rebase": true))
       ])
     ).pipe(autoprefix()).pipe(rename "basename": "assets")
-    if not heler.isProduction
+    if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest(dest))
