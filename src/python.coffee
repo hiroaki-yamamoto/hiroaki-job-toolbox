@@ -16,11 +16,11 @@ require_complex=true, require_mentain=true) ->
     unit_test_dependencies.push "python.mentain"
 
   g.task "#{taskPrefix}python.syntax", ->
-    virtualenv "flake8 #{package_dest}/**/*.py"
+    virtualenv "flake8 #{package_dest}"
   g.task "#{taskPrefix}python.complex", ->
-    virtualenv "radon cc -nc #{package_dest}/**/*.py"
+    virtualenv "radon cc -nc #{package_dest}"
   g.task "#{taskPrefix}python.mentain", ->
-    virtualenv "radon mi -nc #{package_dest}/**/*.py"
+    virtualenv "radon mi -nc #{package_dest}"
 
   g.task "#{taskPrefix}python.nosetest", unit_test_dependencies, ->
     virtualenv(
