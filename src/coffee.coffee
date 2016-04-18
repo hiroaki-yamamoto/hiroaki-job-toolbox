@@ -20,7 +20,7 @@ frontendOnly=true, frontendDir="frontend", lintCfg="./etc/coffeelint.json") ->
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
 
-  gulp.task "#{taskPrefix}coffee", dependencies, ->
+  g.task "#{taskPrefix}coffee", dependencies, ->
     pipe = g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     ).pipe(lint(lintCfg)).pipe(
