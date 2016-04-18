@@ -11,7 +11,7 @@ uglify = require "gulp-uglify"
 helper = require "./helper"
 
 module.exports = (taskPrefix, pkgname, dest, blacklist, dependencies=[],
-frontendOnly=true, frontendDir="frontend") ->
+frontendOnly=true, frontendDir="frontend", lintCfg="./etc/eslint.json") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
@@ -21,7 +21,7 @@ frontendOnly=true, frontendDir="frontend") ->
     pipe = g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     ).pipe(
-      linter("configFile": "./eslint.js")
+      linter("configFile": lintCfg)
     ).pipe(linter.format()).pipe(linter.failAfterError())
 
     if not helper.isProduction
