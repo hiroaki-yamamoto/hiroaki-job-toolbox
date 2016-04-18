@@ -8,9 +8,9 @@ virtualenv = require "./virtualenv"
 module.exports = (taskPrefix, package_dest, require_syntax=true,
 require_complex=true, require_mentain=true) ->
   unit_test_dependencies = []
-  if require_syntax_check
+  if require_syntax
     unit_test_dependencies.push "python.syntax"
-  if require_complex_check
+  if require_complex
     unit_test_dependencies.push "python.complex"
   if require_mentain
     unit_test_dependencies.push "python.mentain"
