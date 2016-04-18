@@ -7,6 +7,7 @@ notify = require "gulp-notify"
 plumber = require "gulp-plumber"
 rename = require "gulp-rename"
 sass = require "gulp-sass"
+sourcemaps = require "gulp-sourcemaps"
 
 helper = require "./helper"
 

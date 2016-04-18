@@ -6,6 +6,7 @@ less = require "gulp-less"
 notify = require "gulp-notify"
 plumber = require "gulp-plumber"
 rename = require "gulp-rename"
+sourcemaps = require "gulp-sourcemaps"
 CleanLESS = require "less-plugin-clean-css"
 
 helper = require "./helper"
