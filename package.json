@@ -1,8 +1,8 @@
 {
   "name": "hyamamoto-job-toolbox",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Toolboxes that hyamamoto usually using",
-  "main": "index.js",
+  "main": "lib/main.js",
   "scripts": {
     "test": "gulp compile"
   },
