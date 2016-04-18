@@ -11,7 +11,7 @@ sass = require "gulp-sass"
 helper = require "./helper"
 
 module.exports = (taskPrefix, pkgname, blacklist, dest) ->
-  thirdPartyBlackLists = helper.blacklist.concat blacklist
+  thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   g.task "#{taskPrefix}less", ->
     pipe = g.src("#{pkgname}/main.scss").pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
