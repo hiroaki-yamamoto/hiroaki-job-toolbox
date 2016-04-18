@@ -4,7 +4,7 @@ Python virtualenv child process spawner.
 
 q = require "q"
 childProcess = require "child_process"
-notify = "gulp-notify"
+notify = require "gulp-notify"
 
 module.exports = (command) ->
   defer= q.defer()
