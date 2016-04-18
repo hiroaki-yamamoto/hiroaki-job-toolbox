@@ -24,7 +24,7 @@ require_complex=true, require_mentain=true) ->
 
   g.task "#{taskPrefix}python.nosetest", unit_test_dependencies, ->
     virtualenv(
-      "nosetest --with-coverage --cover-erase"
+      "nosetests --with-coverage --cover-erase"
       "--cover-package=#{package_dest} --all tests"
     )
   g.task "#{taskPrefix}python.tox", unit_test_dependencies, ->
