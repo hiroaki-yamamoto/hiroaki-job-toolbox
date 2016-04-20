@@ -40,13 +40,14 @@ frontendOnly=true, frontendDir="frontend") ->
   thirdPartyBlackLists = bl.concat(blacklist)
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
-  srcName = [
-    "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js",
-    "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee",
-    "tests/**/js/#{frontend}unit/**/*.js",
+  srcName = [].concat thirdParty
+  srcName = srcName.concat[
+    "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js"
+    "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
+    "#{packageName}/main.coffee"
+    "tests/**/js/#{frontend}unit/**/*.js"
     "tests/**/coffee/#{frontend}unit/**/*.coffee"
   ]
-  srcName = srcName.concat thirdParty
   g.task "#{taskPrefix}karma.server", ->
     g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')

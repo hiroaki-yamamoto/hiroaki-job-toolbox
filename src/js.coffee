@@ -15,7 +15,10 @@ frontendOnly=true, frontendDir="frontend", lintCfg="./etc/eslint.json") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
-  srcName = "#{pkgname}/**/#{blacklist}/**/js/#{frontend}**/*.js"
+  srcName = [
+    "#{pkgname}/**/#{blacklist}/**/js/#{frontend}**/*.js"
+    "#{pkgname}/main.js"
+  ]
 
   g.task "#{taskPrefix}js", dependencies, ->
     pipe = g.src(srcName).pipe(

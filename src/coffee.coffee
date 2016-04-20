@@ -18,7 +18,10 @@ frontendOnly=true, frontendDir="frontend", lintCfg="./etc/coffeelint.json") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
-  srcName = "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
+  srcName = [
+    "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
+    "#{packageName}/main.coffee"
+  ]
 
   g.task "#{taskPrefix}coffee", dependencies, ->
     pipe = g.src(srcName).pipe(
