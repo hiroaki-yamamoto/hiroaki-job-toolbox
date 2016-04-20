@@ -41,7 +41,7 @@ frontendOnly=true, frontendDir="frontend") ->
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [].concat thirdParty
-  srcName = srcName.concat[
+  srcName = srcName.concat [
     "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js"
     "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
     "#{packageName}/main.coffee"
