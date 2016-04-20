@@ -19,7 +19,7 @@ frontendOnly=true, frontendDir="frontend", lintCfg="./etc/coffeelint.json") ->
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
-    "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
+    "#{packageName}/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
     "#{packageName}/main.coffee"
   ]
 

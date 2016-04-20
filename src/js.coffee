@@ -16,7 +16,7 @@ frontendOnly=true, frontendDir="frontend", lintCfg="./etc/eslint.json") ->
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
-    "#{pkgname}/**/#{blacklist}/**/js/#{frontend}**/*.js"
+    "#{pkgname}/#{blacklist}/**/js/#{frontend}**/*.js"
     "#{pkgname}/main.js"
   ]
 

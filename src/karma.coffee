@@ -42,8 +42,8 @@ frontendOnly=true, frontendDir="frontend") ->
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [].concat thirdParty
   srcName = srcName.concat [
-    "#{packageName}/**/#{blacklist}/**/js/#{frontend}**/*.js"
-    "#{packageName}/**/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
+    "#{packageName}/#{blacklist}/**/js/#{frontend}**/*.js"
+    "#{packageName}/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
     "#{packageName}/main.coffee"
     "tests/**/js/#{frontend}unit/**/*.js"
     "tests/**/coffee/#{frontend}unit/**/*.coffee"
