@@ -7,7 +7,7 @@ karma = require "gulp-karma-runner"
 plumber = require "gulp-plumber"
 notify = require "gulp-notify"
 
-bl = require("./helper").thirdPartyBlackLists
+helper = require "./helper"
 
 config =
   "basePath": "./"
@@ -17,7 +17,7 @@ config =
   "colors": true
   "logLevel": "INFO"
   "autoWatch": false
-  "singleRun": process.env.CI or false
+  "singleRun": helper.isProduction
   "port": 9876
   "preprocessors":
     "**/*.coffee": ["coffee"]
@@ -37,7 +37,7 @@ config =
 
 module.exports = (taskPrefix, packageName, thirdParty, blacklist,
 frontendOnly=true, frontendDir="frontend") ->
-  thirdPartyBlackLists = bl.concat(blacklist)
+  thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [].concat thirdParty
