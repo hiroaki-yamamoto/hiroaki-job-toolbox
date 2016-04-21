@@ -2,6 +2,8 @@
 karma tasks
 ###
 
+path = require "path"
+
 g = require "gulp"
 karma = require "gulp-karma-runner"
 plumber = require "gulp-plumber"
@@ -10,8 +12,8 @@ notify = require "gulp-notify"
 helper = require "./helper"
 
 module.exports = (taskPrefix, packageName, thirdParty, blacklist,
-configFile="etc/karma.conf.coffee", frontendOnly=true,
-frontendDir="frontend") ->
+configFile=path.join(process.cwd(), "etc/karma.conf.coffee"),
+frontendOnly=true, frontendDir="frontend") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
