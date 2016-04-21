@@ -10,7 +10,8 @@ notify = require "gulp-notify"
 helper = require "./helper"
 
 module.exports = (taskPrefix, packageName, thirdParty, blacklist,
-configFile="etc/karma.conf.coffee" frontendOnly=true, frontendDir="frontend") ->
+configFile="etc/karma.conf.coffee", frontendOnly=true,
+frontendDir="frontend") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"

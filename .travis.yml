@@ -11,6 +11,7 @@ addons:
     packages:
       - clang-3.6
       - g++-4.8
+      - libnotify-bin
 node_js:
   - "5"
 cache:
