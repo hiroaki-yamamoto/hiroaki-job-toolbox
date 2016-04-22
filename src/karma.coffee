@@ -12,8 +12,7 @@ notify = require "gulp-notify"
 helper = require "./helper"
 
 module.exports = (taskPrefix, packageName, thirdParty, blacklist,
-configFile=path.join(process.cwd(), "etc/karma.conf.coffee"),
-frontendOnly=true, frontendDir="frontend") ->
+config, frontendOnly=true, frontendDir="frontend") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
@@ -27,8 +26,8 @@ frontendOnly=true, frontendDir="frontend") ->
   g.task "#{taskPrefix}karma.server", ->
     g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
-    ).pipe(karma.server "configFile": configFile)
+    ).pipe(karma.server config)
   g.task "#{taskPrefix}karma.runner", ->
     g.src(srcName).pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
-    ).pipe(karma.runner "configFile": configFile)
+    ).pipe(karma.runner config)

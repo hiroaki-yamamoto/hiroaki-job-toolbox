@@ -1,7 +1,6 @@
 helper = require "hyamamoto-job-toolbox"
 
-module.exports = (config) ->
-  config.set
+module.exports =
     "basePath": "./"
     "quiet": true
     "frameworks": ["mocha", "chai", "sinon"]
