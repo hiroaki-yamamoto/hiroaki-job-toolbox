@@ -4,7 +4,8 @@
   "description": "Toolboxes that hyamamoto usually using",
   "main": "lib/main.js",
   "scripts": {
-    "test": "gulp compile"
+    "test": "$(npm bin)/gulp compile",
+    "ncu": "$(npm bin)/ncu"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,7 @@
     "gulp-protractor": "^2.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "karma-chai-plugins": "^0.7.0",
@@ -53,5 +54,8 @@
     "protractor": "^3.2.2",
     "q": "^1.4.1",
     "sinon": "^1.17.3"
+  },
+  "devDependencies": {
+    "npm-check-updates": "^2.6.3"
   }
 }
