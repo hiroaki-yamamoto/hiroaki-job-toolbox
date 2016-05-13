@@ -12,7 +12,7 @@ module.exports = (taskPrefix, package_dest, nosetests_args=[]) ->
     virtualenv "radon cc -nc #{package_dest} tests"
   g.task "#{taskPrefix}python.mentain", ["#{taskPrefix}python.complex"], ->
     virtualenv "radon mi -nc #{package_dest} tests"
-  g.task "#{taskPrefix}python.nosetest", "#{taskPrefix}python.mentain", ->
+  g.task "#{taskPrefix}python.nosetest", ["#{taskPrefix}python.mentain"], ->
     virtualenv "nosetests #{nosetests_args.join ' '} tests"
-  g.task "#{taskPrefix}python.tox", "#{taskPrefix}python.mentain", ->
+  g.task "#{taskPrefix}python.tox", ["#{taskPrefix}python.mentain"], ->
     virtualenv "tox"
