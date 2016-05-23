@@ -4,6 +4,7 @@ Python testing tasks.
 
 g = require "gulp"
 virtualenv = require "./virtualenv"
+command = require "./command"
 
 module.exports = (taskPrefix, package_dest, nosetests_args=[]) ->
   g.task "#{taskPrefix}python.syntax", ->
@@ -16,3 +17,5 @@ module.exports = (taskPrefix, package_dest, nosetests_args=[]) ->
     virtualenv "nosetests #{nosetests_args.join ' '} tests"
   g.task "#{taskPrefix}python.tox", ["#{taskPrefix}python.mentain"], ->
     virtualenv "tox"
+  g.task "#{taskPrefix}python.tox.only", ->
+    command "tox"
