@@ -22,7 +22,7 @@ module.exports = (taskPrefix, pkgname, dest) ->
       less("plugins": [
         new CleanLESS(("advanced": true ,"rebase": true))
       ])
-    ).pipe(autoprefix()).pipe(rename "basename": "assets")
+    ).pipe(autoprefix()).pipe(rename "assets.css")
     if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest(dest))
