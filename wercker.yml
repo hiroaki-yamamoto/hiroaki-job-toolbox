@@ -1,4 +1,4 @@
-box: hysoftware/global-dep-image:latest
+box: nodejs:6.2
 build:
   steps:
     - npm-install
