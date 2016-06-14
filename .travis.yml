@@ -13,9 +13,10 @@ addons:
 node_js:
   - "6.2"
 cache:
+  apt: true
   directories:
     - node_modules
-  apt: true
+    - ~/.npm
 deploy:
   - provider: "npm"
     api_key: "YOUR_API_KEY"
