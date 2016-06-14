@@ -12,7 +12,7 @@ deploy:
     name: "Publish it to npm"
     code: |
       if git rev-parse --verify refs/tags/${WERCKER_GIT_BRANCH} > /dev/null; then
-        npm publish
+        npm publish > /dev/null
       else
         echo "This script runs only release build."
       fi
