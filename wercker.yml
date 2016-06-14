@@ -1,4 +1,4 @@
-box: nodejs:6.2
+box: node:6.2
 build:
   steps:
     - npm-install
