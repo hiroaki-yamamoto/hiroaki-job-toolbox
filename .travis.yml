@@ -1,15 +1,13 @@
 language: "node_js"
 sudo: false
-compiler: clang-3.6
+compiler: g++-4.8
 env:
-  - CXX=clang-3.6
+  - CXX=g++-4.8
 addons:
   apt:
     sources:
-      - llvm-toolchain-precise-3.6
       - ubuntu-toolchain-r-test
     packages:
-      - clang-3.6
       - g++-4.8
       - libnotify-bin
 node_js:
