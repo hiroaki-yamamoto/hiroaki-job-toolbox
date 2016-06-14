@@ -1,9 +1,8 @@
-box: hysoftware/global-dep-image
+box: hysoftware/global-dep-image:latest
 build:
   steps:
     - npm-install
     - npm-test
-
 deploy:
   - script:
     name: "Copy deploy key"
