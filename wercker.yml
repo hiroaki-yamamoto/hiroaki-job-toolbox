@@ -1,0 +1,21 @@
+box: hysoftware/global-dep-image
+build:
+  steps:
+    - npm-install
+    - npm-test
+
+deploy:
+  - script:
+    name: "Copy deploy key"
+    code: echo ${NPM_KEY} | cat > ~/.npmrc
+  - script:
+    name: "Publish it to npm"
+    code: |
+      if git rev-parse --verify refs/tags/${WERCKER_GIT_BRANCH} > /dev/null; then
+        npm publish
+      else
+        echo "This script runs only release build."
+      fi
+  - script:
+    name: "Remove deploy key"
+    code: rm ~/.npmrc
