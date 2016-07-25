@@ -11,7 +11,7 @@ module.exports = (
 ) ->
   if command not instanceof Array
     command = [command]
-  if venvPath and not (activateVenv or helper.isProduction)
+  if activateVenv and not helper.isProduction
     command.splice 0, 0, ". #{venvPath}"
     command.push "deactivate"
   cmd command
