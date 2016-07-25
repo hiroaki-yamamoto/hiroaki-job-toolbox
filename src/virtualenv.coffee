@@ -3,10 +3,14 @@ Python virtualenv child process spawner.
 ###
 
 cmd = require "./command"
+helper = require "./helper"
 
-module.exports = (command) ->
+module.exports = (
+  command, venvPath="#{process.env.VIRTUAL_ENV or ".."}/bin/activate"
+) ->
   if command not instanceof Array
     command = [command]
-  command.splice 0, 0, ". #{process.env.VIRTUAL_ENV or ".."}/bin/activate"
-  command.push "deactivate"
+  if venvPath and helper.isProduction
+    command.splice 0, 0, ". #{venvPath}"
+    command.push "deactivate"
   cmd command
