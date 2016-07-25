@@ -12,7 +12,7 @@ sourcemaps = require "gulp-sourcemaps"
 helper = require "./helper"
 
 module.exports = (taskPrefix, pkgname, dest) ->
-  g.task "#{taskPrefix}less", ->
+  g.task "#{taskPrefix}scss", ->
     pipe = g.src("#{pkgname}/main.scss").pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
     )
