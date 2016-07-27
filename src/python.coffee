@@ -23,15 +23,15 @@ module.exports = (
   g.task "#{taskPrefix}python.complex", ["#{taskPrefix}python.syntax"], ->
     virtualenv(
       (
-        "radon cc -nc -e '#{radon_ignore_args.join(' ')}'"
-        "-i '#{radon_ignore_args.join(' ')}' #{package_dest} tests"
+        "radon cc -nc -e '#{exclude_patterns.join(' ')}'"
+        "-i '#{exclude_patterns.join(' ')}' #{package_dest} tests"
       ), venvPath, activateVenv
     )
   g.task "#{taskPrefix}python.mentain", ["#{taskPrefix}python.complex"], ->
     virtualenv(
       (
-        "radon mi -nc -e '#{radon_ignore_args.join(' ')}'"
-        "-i '#{radon_ignore_args.join(' ')}' #{package_dest} tests"
+        "radon mi -nc -e '#{exclude_patterns.join(' ')}'"
+        "-i '#{exclude_patterns.join(' ')}' #{package_dest} tests"
       ), venvPath, activateVenv
     )
   g.task "#{taskPrefix}python.nosetest", ["#{taskPrefix}python.mentain"], ->
