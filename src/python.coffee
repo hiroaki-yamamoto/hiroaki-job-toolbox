@@ -8,12 +8,12 @@ command = require "./command"
 
 module.exports = (
   taskPrefix, package_dest, venvPath=undefined, activateVenv=true,
-  nosetests_args=[], additoinal_exclude_pattern=[]
+  nosetests_args=[], additoinal_exclude_patterns=[]
 ) ->
   exclude_patterns = [
     ".svn", "CVS", ".bzr", ".hg", ".git",
     "__pycache__", ".tox", ".eggs", "*.egg"
-  ].concat(exclude_pattern)
+  ].concat(additoinal_exclude_patterns)
   radon_ignore_args = (
     "-e #{exclude} -i #{exclude}" for exclude in exclude_patterns
   ).join(" ")
