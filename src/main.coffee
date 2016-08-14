@@ -10,3 +10,4 @@ module.exports =
   "selfcheck": require "./selfcheck"
   "server": require "./server"
   "virtualenv": require "./virtualenv"
+  "helper": require "./helper"
