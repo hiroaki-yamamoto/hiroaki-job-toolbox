@@ -11,7 +11,7 @@ sourcemaps = require "gulp-sourcemaps"
 
 helper = require "./helper"
 
-module.exports = (taskPrefix, pkgname, dest) ->
+module.exports = (taskPrefix, pkgname, dest, out_filename="assets") ->
   g.task "#{taskPrefix}scss", ->
     pipe = g.src("#{pkgname}/main.scss").pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
@@ -20,7 +20,7 @@ module.exports = (taskPrefix, pkgname, dest) ->
       pipe = pipe.pipe(sourcemaps.init())
     pipe = pipe.pipe(sass()).pipe(
       cleancss(("advanced": true ,"rebase": true))
-    ).pipe(autoprefix()).pipe(rename "basename": "assets")
+    ).pipe(autoprefix()).pipe(rename "basename": out_filename)
     if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest(dest))

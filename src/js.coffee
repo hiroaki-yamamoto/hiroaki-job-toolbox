@@ -11,7 +11,8 @@ uglify = require "gulp-uglify"
 helper = require "./helper"
 
 module.exports = (taskPrefix, pkgname, dest, blacklist, dependencies=[],
-frontendOnly=true, frontendDir="frontend", lintCfg="./etc/eslint.json") ->
+frontendOnly=true, frontendDir="frontend", lintCfg="./etc/eslint.json",
+out_filename="assets") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
@@ -30,7 +31,7 @@ frontendOnly=true, frontendDir="frontend", lintCfg="./etc/eslint.json") ->
     if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.init())
     pipe = pipe.pipe(
-      concat("assets.js")
+      concat("#{out_filename}.js")
     ).pipe(uglify "mangle": true)
 
     if not helper.isProduction

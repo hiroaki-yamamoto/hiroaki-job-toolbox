@@ -11,7 +11,7 @@ CleanLESS = require "less-plugin-clean-css"
 
 helper = require "./helper"
 
-module.exports = (taskPrefix, pkgname, dest) ->
+module.exports = (taskPrefix, pkgname, dest, out_filename="assets") ->
   g.task "#{taskPrefix}less", ->
     pipe = g.src("#{pkgname}/main.less").pipe(
       plumber(errorHandler: notify.onError '<%= error.message %>')
@@ -22,7 +22,7 @@ module.exports = (taskPrefix, pkgname, dest) ->
       less("plugins": [
         new CleanLESS(("advanced": true ,"rebase": true))
       ])
-    ).pipe(autoprefix()).pipe(rename "assets.css")
+    ).pipe(autoprefix()).pipe(rename "#{out_filename}.css")
     if not helper.isProduction
       pipe = pipe.pipe(sourcemaps.write())
     pipe = pipe.pipe(g.dest(dest))
