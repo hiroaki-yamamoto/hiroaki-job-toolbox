@@ -20,8 +20,7 @@ out_filename="assets") ->
   blacklist = "!(#{thirdPartyBlackLists.join '|'})"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
-    # "#{packageName}/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
-    "#{packageName}/**/@(#{blacklist}/coffee|coffee)/#{frontend}**/*.coffee"
+    "#{packageName}/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
     "#{packageName}/main.coffee"
   ]
 
