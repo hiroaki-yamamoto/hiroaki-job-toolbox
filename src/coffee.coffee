@@ -15,12 +15,14 @@ helper = require "./helper"
 
 module.exports = (taskPrefix, packageName, dest, blacklist, dependencies=[],
 frontendOnly=true, frontendDir="frontend", lintCfg="./etc/coffeelint.json",
-out_filename="assets") ->
+out_filename="assets", enableBlacklist=true) ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
-  blacklist = "!(#{thirdPartyBlackLists.join '|'})"
+  blacklist = if enableBlacklist
+    "!(#{thirdPartyBlackLists.join '|'})/"
+  else ""
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
-    "#{packageName}/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
+    "#{packageName}/#{blacklist}**/coffee/#{frontend}**/*.coffee"
     "#{packageName}/main.coffee"
   ]
 
