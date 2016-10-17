@@ -17,7 +17,7 @@ module.exports = (taskPrefix, packageName, dest, blacklist, dependencies=[],
 frontendOnly=true, frontendDir="frontend", lintCfg="./etc/coffeelint.json",
 out_filename="assets") ->
   thirdPartyBlackLists = helper.thirdPartyBlackLists.concat blacklist
-  blacklist = "!(#{thirdPartyBlackLists.join '|'})"
+  blacklist = "?(!(#{thirdPartyBlackLists.join '|'}))"
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
     "#{packageName}/#{blacklist}/**/coffee/#{frontend}**/*.coffee"
