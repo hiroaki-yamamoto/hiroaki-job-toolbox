@@ -1,6 +1,6 @@
 {
   "name": "hyamamoto-job-toolbox",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Toolboxes that hyamamoto usually using",
   "main": "lib/main.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/hiroaki-yamamoto/hiroaki-job-toolbox#readme",
   "dependencies": {
     "chai": "^3.5.0",
-    "coffee-script": "^1.11.0",
+    "coffee-script": "^1.11.1",
     "freeport": "^1.0.5",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -32,13 +32,13 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^3.0.1",
     "gulp-karma-runner": "^1.2.0",
-    "gulp-less": "^3.1.0",
+    "gulp-less": "^3.2.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-protractor": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "karma-chai-plugins": "^0.8.0",
@@ -49,13 +49,13 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sinon": "^1.0.5",
     "less-plugin-clean-css": "^1.5.1",
-    "mocha": "^3.1.0",
-    "phantomjs-prebuilt": "^2.1.12",
-    "protractor": "^4.0.9",
+    "mocha": "^3.1.2",
+    "phantomjs-prebuilt": "^2.1.13",
+    "protractor": "^4.0.10",
     "q": "^1.4.1",
     "sinon": "^1.17.6"
   },
   "devDependencies": {
-    "npm-check-updates": "^2.8.0"
+    "npm-check-updates": "^2.8.6"
   }
 }
