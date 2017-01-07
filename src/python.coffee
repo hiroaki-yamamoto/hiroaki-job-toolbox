@@ -17,27 +17,23 @@ module.exports = (
   pyvenv = (cmd) ->
     commandFunc = if activateVenv then command.pyvenv else command
     commandFunc.apply @, [].concat(
-      command, if activateVenv then [venvPath, undefined] else [],
+      cmd, if activateVenv then [venvPath, undefined] else [],
       ("stdio": ["inherit", "pipe", "pipe"])
     )
 
   g.task "#{taskPrefix}python.syntax", ->
-    command =
+    pyvenv(
       "flake8 --exclude='#{exclude_patterns.join(",")}' #{package_dest} tests"
-    pyvenv command
+    )
   g.task "#{taskPrefix}python.complex", ["#{taskPrefix}python.syntax"], ->
-    command = "radon cc -nc -e '#{exclude_patterns.join(' ')}'
-               -i '#{exclude_patterns.join(' ')}' #{package_dest} tests"
-    pyvenv command
+    pyvenv("radon cc -nc -e '#{exclude_patterns.join(' ')}'
+            -i '#{exclude_patterns.join(' ')}' #{package_dest} tests")
   g.task "#{taskPrefix}python.mentain", ["#{taskPrefix}python.complex"], ->
-    command = "radon mi -nc -e '#{exclude_patterns.join(' ')}'
-               -i '#{exclude_patterns.join(' ')}' #{package_dest} tests"
-    pyvenv command
+    pyvenv("radon mi -nc -e '#{exclude_patterns.join(' ')}'
+            -i '#{exclude_patterns.join(' ')}' #{package_dest} tests")
   g.task "#{taskPrefix}python.nosetest", ["#{taskPrefix}python.mentain"], ->
-    command = "nosetests #{nosetests_args.join ' '} tests"
-    pyvenv command
+    pyvenv "nosetests #{nosetests_args.join ' '} tests"
   g.task "#{taskPrefix}python.tox", ["#{taskPrefix}python.mentain"], ->
-    command = "tox"
-    pyvenv command
+    pyvenv "tox"
   g.task "#{taskPrefix}python.tox.only", ->
     command "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
