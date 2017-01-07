@@ -3,8 +3,7 @@ Python testing tasks.
 ###
 
 g = require "gulp"
-virtualenv = require "./virtualenv"
-command = require "./command"
+command = require "simple-process"
 
 module.exports = (
   taskPrefix, package_dest, venvPath=undefined, activateVenv=true,
@@ -16,28 +15,28 @@ module.exports = (
   ].concat(additoinal_exclude_patterns)
 
   g.task "#{taskPrefix}python.syntax", ->
-    virtualenv(
+    command.pyvenv(
       "flake8 --exclude=#{exclude_patterns.join(",")} #{package_dest} tests",
       venvPath, activateVenv
     )
   g.task "#{taskPrefix}python.complex", ["#{taskPrefix}python.syntax"], ->
-    virtualenv(
+    command.pyvenv(
       "radon cc -nc -e '#{exclude_patterns.join(' ')}'
         -i '#{exclude_patterns.join(' ')}' #{package_dest} tests",
       venvPath, activateVenv
     )
   g.task "#{taskPrefix}python.mentain", ["#{taskPrefix}python.complex"], ->
-    virtualenv(
+    command.pyvenv(
       "radon mi -nc -e '#{exclude_patterns.join(' ')}'
         -i '#{exclude_patterns.join(' ')}' #{package_dest} tests"
       , venvPath, activateVenv
     )
   g.task "#{taskPrefix}python.nosetest", ["#{taskPrefix}python.mentain"], ->
-    virtualenv(
+    command.pyvenv(
       "nosetests #{nosetests_args.join ' '} tests",
       venvPath, activateVenv
     )
   g.task "#{taskPrefix}python.tox", ["#{taskPrefix}python.mentain"], ->
-    virtualenv "tox", venvPath, activateVenv
+    command.pyvenv "tox", venvPath, activateVenv
   g.task "#{taskPrefix}python.tox.only", ->
     command "tox"

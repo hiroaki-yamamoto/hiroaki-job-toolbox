@@ -1,6 +1,5 @@
 module.exports =
   "coffee": require "./coffee"
-  "command": require "./command"
   "js": require "./js"
   "karma": require "./karma"
   "less": require "./less"
