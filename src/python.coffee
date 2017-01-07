@@ -22,11 +22,11 @@ module.exports = (
       ("stdio": ["inherit", "pipe", "pipe"])
     )).catch(
       (err) ->
-        notify.onError("<%= error.message %>")(
-          if err instanceof Error then err else new Error(
-            err.stderr + "(Code: #{err.code})"
-          )
+        error = if err instanceof Error then err else new Error(
+          err.stderr + "(Code: #{err.code})"
         )
+        notify.onError("<%= error.message %>")(error)
+        throw error
     )
 
   g.task "#{taskPrefix}python.syntax", ->
@@ -48,11 +48,11 @@ module.exports = (
       "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
     ).catch(
       (err) ->
+        error = if err instanceof Error then err else new Error(
+          err.stderr + "(Code: #{err.code})"
+        )
         notify.onError(
           "<%= error.message %>"
-        )(
-          if err instanceof Error then err else new Error(
-            err.stderr + "(Code: #{err.code})"
-          )
-        )
+        )(error)
+        throw error
     )
