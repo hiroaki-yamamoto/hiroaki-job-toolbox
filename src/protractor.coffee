@@ -9,8 +9,6 @@ notify = require "gulp-notify"
 protractor = require("gulp-protractor").protractor
 q = require "q"
 
-virtualenv = require "./virtualenv"
-
 
 browserConfig =
   "chrome": [

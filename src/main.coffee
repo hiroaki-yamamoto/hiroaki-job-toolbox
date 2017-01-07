@@ -8,5 +8,4 @@ module.exports =
   "sass": require "./sass"
   "selfcheck": require "./selfcheck"
   "server": require "./server"
-  "virtualenv": require "./virtualenv"
   "helper": require "./helper"
