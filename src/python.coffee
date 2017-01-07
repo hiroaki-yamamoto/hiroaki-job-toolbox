@@ -20,7 +20,12 @@ module.exports = (
     commandFunc.apply(@, [].concat(
       cmd, if activateVenv then [venvPath, undefined] else [],
       ("stdio": ["inherit", "pipe", "pipe"])
-    )).catch notify.onError('<%= error.message %>')
+    )).catch(
+      (err) ->
+        notify.onError(
+          "<%= error.#{if err instnceof Error then "message" else "stderr"} %>"
+        )(err)
+    )
 
   g.task "#{taskPrefix}python.syntax", ->
     pyvenv(
@@ -39,4 +44,9 @@ module.exports = (
   g.task "#{taskPrefix}python.tox.only", ->
     command(
       "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
-    ).catch notify.onError('<%= error.message %>')
+    ).catch(
+      (err) ->
+        notify.onError(
+          "<%= error.#{if err instnceof Error then "message" else "stderr"} %>"
+        )(err)
+    )
