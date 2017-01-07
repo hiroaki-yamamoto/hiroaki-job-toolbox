@@ -18,7 +18,7 @@ module.exports = (
 
   g.task "#{taskPrefix}python.syntax", ->
     pyvenv(
-      "flake8 --exclude=#{exclude_patterns.join(",")} #{package_dest} tests",
+      "flake8 --exclude='#{exclude_patterns.join(",")}' #{package_dest} tests",
       venvPath if activateVenv
     )
   g.task "#{taskPrefix}python.complex", ["#{taskPrefix}python.syntax"], ->
