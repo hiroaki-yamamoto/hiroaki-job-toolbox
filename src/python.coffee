@@ -23,7 +23,7 @@ module.exports = (
     )).catch(
       (err) ->
         notify.onError(
-          "<%= error.#{if err instnceof Error then "message" else "stderr"} %>"
+          "<%= error.#{if err instanceof Error then "message" else "stderr"} %>"
         )(err)
     )
 
@@ -47,6 +47,6 @@ module.exports = (
     ).catch(
       (err) ->
         notify.onError(
-          "<%= error.#{if err instnceof Error then "message" else "stderr"} %>"
+          "<%= error.#{if err instanceof Error then "message" else "stderr"} %>"
         )(err)
     )
