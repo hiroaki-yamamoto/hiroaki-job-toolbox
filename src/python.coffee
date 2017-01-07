@@ -22,9 +22,11 @@ module.exports = (
       ("stdio": ["inherit", "pipe", "pipe"])
     )).catch(
       (err) ->
-        notify.onError(
-          "<%= error.#{if err instanceof Error then "message" else "stderr"} %>"
-        )(err)
+        notify.onError("<%= error.message %>")(
+          if err instanceof Error then err else new Error(
+            err.stderr + "(Code: #{err.code})"
+          )
+        )
     )
 
   g.task "#{taskPrefix}python.syntax", ->
@@ -47,6 +49,10 @@ module.exports = (
     ).catch(
       (err) ->
         notify.onError(
-          "<%= error.#{if err instanceof Error then "message" else "stderr"} %>"
-        )(err)
+          "<%= error.message %>"
+        )(
+          if err instanceof Error then err else new Error(
+            err.stderr + "(Code: #{err.code})"
+          )
+        )
     )
