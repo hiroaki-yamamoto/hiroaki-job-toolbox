@@ -3,6 +3,7 @@ Python testing tasks.
 ###
 
 g = require "gulp"
+notify = require "gulp-notify"
 command = require "simple-process"
 
 module.exports = (
@@ -16,10 +17,10 @@ module.exports = (
 
   pyvenv = (cmd) ->
     commandFunc = if activateVenv then command.pyvenv else command
-    commandFunc.apply @, [].concat(
+    commandFunc.apply(@, [].concat(
       cmd, if activateVenv then [venvPath, undefined] else [],
       ("stdio": ["inherit", "pipe", "pipe"])
-    )
+    )).catch notify.onError('<%= error.message %>')
 
   g.task "#{taskPrefix}python.syntax", ->
     pyvenv(
@@ -36,4 +37,6 @@ module.exports = (
   g.task "#{taskPrefix}python.tox", ["#{taskPrefix}python.mentain"], ->
     pyvenv "tox"
   g.task "#{taskPrefix}python.tox.only", ->
-    command "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
+    command(
+      "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
+    ).catch notify.onError('<%= error.message %>')
