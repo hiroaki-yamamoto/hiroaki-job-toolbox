@@ -3,6 +3,7 @@ Python testing tasks.
 ###
 
 g = require "gulp"
+notify = require "gulp-notify"
 command = require "simple-process"
 
 module.exports = (
@@ -14,42 +15,44 @@ module.exports = (
     "__pycache__", ".tox", ".eggs", "*.egg"
   ].concat(additoinal_exclude_patterns)
 
-  pyvenv = if activateVenv then command.pyvenv else command
-  handleResult = (result) ->
-    if result.stdout
-      console.log result.stdout
-    if result.stderr
-      console.warn result.stderr
-  handleError = (err) ->
-    if err instanceof Error
-      throw err
-    else
-      console.error err
+  pyvenv = (cmd) ->
+    commandFunc = if activateVenv then command.pyvenv else command
+    commandFunc.apply(@, [].concat(
+      cmd, if activateVenv then [venvPath, undefined] else [],
+      ("stdio": ["inherit", "pipe", "pipe"])
+    )).catch(
+      (err) ->
+        error = if err instanceof Error then err else new Error(
+          err.stderr + "(Code: #{err.code})"
+        )
+        notify.onError("<%= error.message %>")(error)
+        throw error
+    )
 
   g.task "#{taskPrefix}python.syntax", ->
     pyvenv(
-      "flake8 --exclude='#{exclude_patterns.join(",")}' #{package_dest} tests",
-      venvPath if activateVenv
-    ).then(handleResult).catch(handleError)
-  g.task "#{taskPrefix}python.complex", ["#{taskPrefix}python.syntax"], ->
-    pyvenv(
-      "radon cc -nc -e '#{exclude_patterns.join(' ')}'
-        -i '#{exclude_patterns.join(' ')}' #{package_dest} tests",
-      venvPath if activateVenv
-    ).then(handleResult).catch(handleError)
-  g.task "#{taskPrefix}python.mentain", ["#{taskPrefix}python.complex"], ->
-    pyvenv(
-      "radon mi -nc -e '#{exclude_patterns.join(' ')}'
-        -i '#{exclude_patterns.join(' ')}' #{package_dest} tests",
-        venvPath if activateVenv
+      "flake8 --exclude='#{exclude_patterns.join(",")}' #{package_dest} tests"
     )
+  g.task "#{taskPrefix}python.complex", ["#{taskPrefix}python.syntax"], ->
+    pyvenv("radon cc -nc -e '#{exclude_patterns.join(' ')}'
+            -i '#{exclude_patterns.join(' ')}' #{package_dest} tests")
+  g.task "#{taskPrefix}python.mentain", ["#{taskPrefix}python.complex"], ->
+    pyvenv("radon mi -nc -e '#{exclude_patterns.join(' ')}'
+            -i '#{exclude_patterns.join(' ')}' #{package_dest} tests")
   g.task "#{taskPrefix}python.nosetest", ["#{taskPrefix}python.mentain"], ->
-    pyvenv(
-      "nosetests #{nosetests_args.join ' '} tests", venvPath if activateVenv
-    ).then(handleResult).catch(handleError)
+    pyvenv "nosetests #{nosetests_args.join ' '} tests"
   g.task "#{taskPrefix}python.tox", ["#{taskPrefix}python.mentain"], ->
-    pyvenv(
-      "tox", venvPath if activateVenv
-    ).then(handleResult).catch(handleError)
+    pyvenv "tox"
   g.task "#{taskPrefix}python.tox.only", ->
-    command("tox").then(handleResult).catch(handleError)
+    command(
+      "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
+    ).catch(
+      (err) ->
+        error = if err instanceof Error then err else new Error(
+          err.stderr + "(Code: #{err.code})"
+        )
+        notify.onError(
+          "<%= error.message %>"
+        )(error)
+        throw error
+    )
