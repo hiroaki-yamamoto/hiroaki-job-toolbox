@@ -11,7 +11,7 @@ addons:
       - g++-4.8
       - libnotify-bin
 node_js:
-  - "6.2"
+  - "node"
 cache:
   apt: true
   yarn: true
