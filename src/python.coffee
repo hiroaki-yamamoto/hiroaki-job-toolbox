@@ -19,7 +19,7 @@ module.exports = (
     commandFunc = if activateVenv then command.pyvenv else command
     commandFunc.apply(@, [].concat(
       cmd, if activateVenv then [venvPath, undefined] else [],
-      ("stdio": ["inherit", "pipe", "pipe"])
+      ("stdio": ["inherit", "inherit", "pipe"])
     )).catch(
       (err) ->
         error = if err instanceof Error then err else new Error(
@@ -45,7 +45,7 @@ module.exports = (
     pyvenv "tox"
   g.task "#{taskPrefix}python.tox.only", ->
     command(
-      "tox", [], ("stdio": ["inherit", "pipe", "pipe"])
+      "tox", [], ("stdio": ["inherit", "inherit", "pipe"])
     ).catch(
       (err) ->
         error = if err instanceof Error then err else new Error(
