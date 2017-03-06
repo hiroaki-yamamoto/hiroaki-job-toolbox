@@ -19,6 +19,7 @@ cache:
     - node_modules
     - ~/.npm
 before_deploy:
+  - "echo ${TRAVIS_TAG}"
   - "perl -pe \"s/\\[VERSION\\]/${TRAVIS_TAG}/\" package.json > package.json.new"
   - "mv package.json.new package.json"
   - "cat package.json"
