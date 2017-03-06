@@ -18,6 +18,9 @@ cache:
   directories:
     - node_modules
     - ~/.npm
+before_deploy:
+  - "perl -pe \"s/\\[VERSION\\]/${TRAVIS_TAG}/\" package.json > package.json.new"
+  - "mv package.json.new package.json"
 deploy:
   - provider: "npm"
     email: hiroaki@hysoftware.net
