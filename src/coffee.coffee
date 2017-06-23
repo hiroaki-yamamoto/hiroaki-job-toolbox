@@ -22,7 +22,7 @@ out_filename="assets", enableBlacklist=true) ->
   else ""
   frontend = if frontendOnly then "" else "#{frontendDir}/"
   srcName = [
-    "#{packageName}/#{blacklist}**/coffee/#{frontend}**/*.coffee"
+    "#{packageName}/#{blackist}**/coffee/#{frontend}**/*.coffee"
     "#{packageName}/main.coffee"
   ]
 
