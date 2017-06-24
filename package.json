@@ -33,8 +33,16 @@
     "npm-check-updates": "^2.12.0"
   },
   "optionalDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.5.2",
+    "babili-webpack-plugin": "^0.1.1",
     "chai": "^4.0.2",
     "coffee-script": "^1.12.6",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
     "freeport": "^1.0.5",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-cleancss": "^0.2.2",
@@ -59,9 +67,15 @@
     "less-plugin-clean-css": "^1.5.1",
     "mocha": "^3.4.2",
     "phantomjs-prebuilt": "^2.1.14",
+    "postcss-clean": "^1.0.2",
+    "postcss-loader": "^2.0.6",
     "protractor": "^5.1.2",
     "q": "^1.5.0",
+    "sass-loader": "^6.0.6",
     "simple-process": "^1.0.14",
-    "sinon": "^2.3.5"
+    "sinon": "^2.3.5",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0"
   }
 }
