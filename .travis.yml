@@ -15,9 +15,6 @@ node_js:
 cache:
   apt: true
   yarn: true
-  directories:
-    - node_modules
-    - ~/.npm
 before_deploy:
   - "echo ${TRAVIS_TAG}"
   - "perl -pe \"s/0.0.0/${TRAVIS_TAG}/\" package.json > package.json.new"
