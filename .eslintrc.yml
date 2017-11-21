@@ -1,6 +1,4 @@
 extends: airbnb-base
-plugins:
-  - import
 parserOptions:
   ecmaVersion: 6
   sourceType: module
@@ -23,3 +21,9 @@ rules:
     - devDependencies: true
       optionalDependencies: true
       peerDependencies: true
+  function-paren-newline:
+    - "error"
+    - "consistent"
+  object-curly-newline:
+    - "error"
+    - "consistent": true
