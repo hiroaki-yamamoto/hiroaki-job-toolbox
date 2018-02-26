@@ -5,7 +5,8 @@
   "main": "lib/main.js",
   "scripts": {
     "test": "$(npm bin)/gulp compile",
-    "ncu": "$(npm bin)/ncu"
+    "ncu": "$(npm bin)/ncu",
+    "nyc": "$(npm bin)/nyc --reporter=lcov --reporter text $(npm bin)/mocha tests"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,6 @@
   "homepage": "https://github.com/hiroaki-yamamoto/hiroaki-job-toolbox#readme",
   "dependencies": {
     "gulp": "^4.0.0",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.0",
-    "nyc": "^11.4.1",
     "undertaker": "^1.2.0",
     "undertaker-registry": "^1.0.1"
   },
@@ -33,14 +31,13 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
     "gulp-eslint": "^4.0.2",
-    "gulp-mocha": "^5.0.0",
-    "npm-check-updates": "^2.14.0"
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "npm-check-updates": "^2.14.0",
+    "nyc": "^11.4.1"
   },
   "optionalDependencies": {
     "autoprefixer": "^8.0.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
     "babili-webpack-plugin": "^0.1.2",
     "chai": "^4.1.2",
     "coffee-script": "^1.12.7",
@@ -81,5 +78,11 @@
     "style-loader": "^0.20.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "all": true
   }
 }
