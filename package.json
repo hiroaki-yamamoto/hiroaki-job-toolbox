@@ -4,9 +4,10 @@
   "description": "Toolboxes that hyamamoto usually using",
   "main": "lib/main.js",
   "scripts": {
-    "test": "$(npm bin)/gulp compile",
+    "lint": "$(npm bin)/eslint lib tests",
     "ncu": "$(npm bin)/ncu",
-    "nyc": "$(npm bin)/nyc --reporter=lcov --reporter text $(npm bin)/mocha tests"
+    "nyc": "$(npm bin)/nyc --reporter=lcov --reporter text $(npm bin)/mocha tests",
+    "test": "npm run lint && npm run nyc"
   },
   "repository": {
     "type": "git",
