@@ -1,0 +1,2 @@
+(function(){module.exports.add=function(n,t){return n+t}}).call(this);
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkZC5jb2ZmZWUiXSwibmFtZXMiOlsibW9kdWxlIiwiZXhwb3J0cyIsImFkZCIsImEiLCJiIl0sIm1hcHBpbmdzIjoiQ0FBQSxXQUFBQSxPQUFPQyxRQUFRQyxJQUFNLFNBQUNDLEVBQUdDLFVBQU1ELEVBQUlDIiwiZmlsZSI6ImFzc2V0cy5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzLmFkZCA9IChhLCBiKSAtPiBhICsgYlxuIl19
