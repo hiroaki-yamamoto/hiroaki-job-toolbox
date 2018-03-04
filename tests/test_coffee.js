@@ -1,14 +1,15 @@
 /* global describe, it, beforeEach, afterEach */
 ((r) => {
-  const gulp = r('gulp');
+  const path = r('path');
   const rimraf = r('rimraf');
   const { expect } = r('chai');
-  const path = r('path');
+  const Undertaker = r('undertaker');
   const Coffee = r('../lib/coffee');
   const helper = r('../lib/helper');
 
   describe('General setting test', () => {
     const outPath = 'tests/build/coffee/assets.js';
+    const gulp = r('gulp');
     let task;
     beforeEach(() => {
       rimraf.sync(path.dirname(outPath));
@@ -23,6 +24,7 @@
       expect(task.opts).to.eql({
         lintCfg: path.resolve(path.join(__dirname, '../etc/coffeelint.json')),
         isProductionMode: helper.isProduction,
+        taskPrefix: '',
       });
     });
     it('Check code generation', (done) => {
@@ -44,7 +46,21 @@
       expect(task.opts).to.eql({
         lintCfg: path.resolve(path.join(__dirname, '../etc/coffeelint.json')),
         isProductionMode: true,
+        taskPrefix: '',
       });
+    });
+  });
+
+  describe('TaskPrefix check', () => {
+    let undertaker;
+    beforeEach(() => {
+      undertaker = new Undertaker(
+        new Coffee('src', 'dest', { taskPrefix: 'module.' })
+      );
+    });
+    it('Check if the task name is the expected name.', () => {
+      expect(undertaker.task('coffee')).not.to.be.ok;
+      expect(undertaker.task('module.coffee')).to.be.ok;
     });
   });
 })(require);
