@@ -24,6 +24,7 @@
   "homepage": "https://github.com/hiroaki-yamamoto/hiroaki-job-toolbox#readme",
   "dependencies": {
     "gulp": "^4.0.0",
+    "lodash": "^4.17.5",
     "undertaker": "^1.2.0",
     "undertaker-registry": "^1.0.1"
   },
