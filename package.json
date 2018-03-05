@@ -4,7 +4,7 @@
   "description": "Toolboxes that hyamamoto usually using",
   "main": "lib/main.js",
   "scripts": {
-    "lint": "$(npm bin)/eslint lib tests",
+    "lint": "$(npm bin)/eslint  lib tests",
     "ncu": "$(npm bin)/ncu",
     "nyc": "$(npm bin)/nyc --reporter=lcov --reporter text $(npm bin)/mocha tests",
     "test": "npm run lint && npm run nyc"

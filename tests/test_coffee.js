@@ -1,4 +1,3 @@
-/* global describe, it, beforeEach, afterEach */
 ((r) => {
   const path = r('path');
   const rimraf = r('rimraf');
@@ -8,7 +7,7 @@
   const helper = r('../lib/helper');
 
   describe('General setting test', () => {
-    const outPath = 'tests/build/coffee/assets.js';
+    const outPath = path.join(__dirname, 'build', 'coffee', 'assets.js');
     const gulp = r('gulp');
     let task;
     beforeEach(() => {
@@ -17,9 +16,7 @@
       gulp.registry(task);
       gulp.on('error', (err) => { throw err; });
     });
-    afterEach(() => {
-      rimraf.sync(outPath);
-    });
+    afterEach(() => { rimraf.sync(path.dirname(outPath)); });
     it('Check if the option is default setting', () => {
       expect(task.opts).to.eql({
         lintCfg: path.resolve(path.join(__dirname, '../etc/coffeelint.json')),

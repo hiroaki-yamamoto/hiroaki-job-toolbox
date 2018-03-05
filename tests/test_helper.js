@@ -1,4 +1,3 @@
-/* global describe, it */
 ((require) => {
   const helper = require('../lib/helper.js');
   const { expect } = require('chai');
