@@ -56,7 +56,7 @@
       );
     });
     it('Check if the task name is the expected name.', () => {
-      expect(undertaker.task('coffee')).not.to.be.ok;
+      expect(undertaker.task('coffee')).to.be.undefined;
       expect(undertaker.task('module.coffee')).to.be.ok;
     });
   });

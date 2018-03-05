@@ -2,6 +2,7 @@
   const path = req('path');
   const { expect } = req('chai');
   const rimraf = req('rimraf');
+  const Undertaker = req('undertaker');
 
   const gulp = req('gulp');
 
@@ -36,6 +37,31 @@
         expect(sub.number()).to.be.equal(-1);
         done();
       });
+    });
+  });
+
+  describe('Registry initialization with unusual options.', () => {
+    let regist;
+    let taker;
+    beforeEach(() => {
+      regist = new JSTask(
+        'src', 'dest',
+        { taskPrefix: 'prefix.', isProductionMode: true }
+      );
+      taker = new Undertaker(regist);
+    });
+
+    it('The option should be correct.', () => {
+      expect(regist.opts).to.be.eql({
+        taskPrefix: 'prefix.',
+        isProductionMode: true,
+        lintCfg: path.resolve(path.join(__dirname, '../etc/eslint.json')),
+      });
+    });
+
+    it('The name of task should be prefixed.', () => {
+      expect(taker.task('js')).to.be.undefined;
+      expect(taker.task('prefix.js')).to.be.ok;
     });
   });
 })(require);
