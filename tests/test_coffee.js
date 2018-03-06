@@ -8,8 +8,11 @@
 
   describe('General setting test', () => {
     const outPath = path.join(__dirname, 'build', 'coffee', 'assets.js');
+    const handleErr = (err) => { throw err; };
     const gulp = r('gulp');
     let task;
+    before(() => { gulp.on('error', handleErr); });
+    after(() => { gulp.removeListener('error', handleErr); });
     beforeEach(() => {
       rimraf.sync(path.dirname(outPath));
       task = new Coffee('tests/fixtures/test_coffee/*.coffee', outPath);

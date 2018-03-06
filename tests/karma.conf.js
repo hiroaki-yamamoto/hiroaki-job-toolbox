@@ -1,17 +1,17 @@
 (() => {
   module.exports = {
     basePath: './',
-    quiet: true,
+    quiet: false,
     frameworks: ['mocha', 'chai', 'sinon'],
     reporters: ['progress'],
     colors: false,
     logLevel: 'INFO',
     autoWatch: false,
-    singleRun: false,
+    singleRun: true,
     port: 9876,
     preprocessors: { '**/*.coffee': ['coffee'] },
     coffeePreprocessor: { options: { sourceMap: true } },
-    browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+    browsers: ['PhantomJS'],
     plugins: [
       'karma-mocha',
       'karma-chai-plugins',

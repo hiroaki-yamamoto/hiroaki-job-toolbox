@@ -11,12 +11,14 @@
 
   describe('JS code concat registry check.', () => {
     const outPath = path.join(__dirname, 'build', 'js', 'assets.js');
+    const handleErr = (err) => { throw err; };
     let regist;
+    before(() => { gulp.on('error', handleErr); });
+    after(() => { gulp.removeListener('error', handleErr); });
     beforeEach(() => {
       rimraf.sync(path.dirname(outPath));
       regist = new JSTask('tests/fixtures/test_js/*.js', outPath);
       gulp.registry(regist);
-      gulp.on('error', (err) => { throw err; });
     });
     afterEach(() => { rimraf.sync(path.dirname(outPath)); });
     it('The task registry has the default options',

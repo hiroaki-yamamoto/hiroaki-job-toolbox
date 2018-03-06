@@ -1,6 +1,7 @@
 ((req) => {
   const { expect } = req('chai');
   const Undertaker = req('undertaker');
+  const gulp = req('gulp');
   const KarmaRegistry = req('../lib/karma.js');
   describe('Karma Registry default configuration and option Test', () => {
     let registry;
@@ -41,6 +42,38 @@
       expect(undertaker.task(
         `${registry.opts.taskPrefix}karma.runner`
       )).to.be.ok;
+    });
+  });
+
+  describe('Karma actual working test', () => {
+    beforeEach(() => {
+      gulp.registry(new KarmaRegistry([
+        'tests/fixtures/test_js/*.js',
+        'tests/fixtures/browser_test/*.js',
+      ], req('./karma.conf.js')));
+    });
+    describe('For server', () => {
+      const raiseError = (err) => { throw err; };
+      before(() => { gulp.on('error', raiseError); });
+      after(() => { gulp.removeListener('error', raiseError); });
+      it('Should run properly', (done) => {
+        gulp.series('karma.server')(done);
+      });
+    });
+  });
+  describe('For runner', () => {
+    it('Should instruct server to run the test', (done) => {
+      const handleError = (err) => {
+        console.log('hello');
+        expect(err.message).to.be.equal('Failed Unit Tests!');
+        expect(err.name).to.be.equal('karma.runner');
+        done();
+      };
+      gulp.on('error', handleError);
+      gulp.series('karma.runner')((err) => {
+        if (err) { handleError(err); return; }
+        done(new Error('Should raise an error.'));
+      });
     });
   });
 })(require);

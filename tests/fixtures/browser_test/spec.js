@@ -17,7 +17,7 @@
     });
     it('The result should be 1', function () {
       sub.sub(1);
-      expect(adder.number()).to.be.equal(-1);
+      expect(sub.number()).to.be.equal(-1);
     });
   });
 })();
