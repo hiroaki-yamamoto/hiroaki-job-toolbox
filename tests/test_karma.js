@@ -53,28 +53,29 @@
       ], cfg));
     });
     afterEach(() => { gulp.removeAllListeners('error'); });
-    after(done => karmaStopper.stop(cfg, () => done()));
     describe('For server', () => {
       beforeEach(() => { gulp.on('error', (err) => { throw err; }); });
       it('Should run properly', function (done) {
         this.timeout(10000);
-        gulp.series('karma.server')(done);
+        gulp.series('karma.server')((err) => {
+          karmaStopper.stop(cfg, () => done(err));
+        });
       });
     });
-  });
-  describe('For runner', () => {
-    it('Should instruct server to run the test', function (done) {
-      this.timeout(10000);
-      const handleError = (err) => {
-        expect(err.error.message).to.be.equal('Failed Unit Tests!');
-        expect(err.error.plugin).to.be.equal('gulp-karma-runner.runner');
-        done();
-      };
-      gulp.on('error', handleError);
-      gulp.series('karma.runner')((err) => {
-        if (!err) {
-          done(new Error('Should raise an error.'));
-        }
+    describe('For runner', () => {
+      it('Should instruct server to run the test', function (done) {
+        this.timeout(10000);
+        const handleError = (err) => {
+          expect(err.error.message).to.be.equal('Failed Unit Tests!');
+          expect(err.error.plugin).to.be.equal('gulp-karma-runner.runner');
+          done();
+        };
+        gulp.on('error', handleError);
+        gulp.series('karma.runner')((err) => {
+          if (!err) {
+            done(new Error('Should raise an error.'));
+          }
+        });
       });
     });
   });
