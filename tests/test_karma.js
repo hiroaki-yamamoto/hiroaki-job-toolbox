@@ -55,13 +55,15 @@
     afterEach(() => { gulp.removeAllListeners('error'); });
     describe('For server', () => {
       before(() => { gulp.on('error', (err) => { throw err; }); });
-      it('Should run properly', (done) => {
+      it('Should run properly', function (done) {
+        this.timeout(10000);
         gulp.series('karma.server')(done);
       });
     });
   });
   describe('For runner', () => {
-    it('Should instruct server to run the test', (done) => {
+    it('Should instruct server to run the test', function (done) {
+      this.timeout(10000);
       const handleError = (err) => {
         expect(err.error.message).to.be.equal('Failed Unit Tests!');
         expect(err.error.plugin).to.be.equal('gulp-karma-runner.runner');

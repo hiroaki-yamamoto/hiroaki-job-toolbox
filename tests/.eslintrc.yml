@@ -1,5 +1,6 @@
 rules:
   no-unused-expressions: warn
+  func-names: off
 
 globals:
   beforeEach: false
