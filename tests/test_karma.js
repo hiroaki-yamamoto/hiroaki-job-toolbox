@@ -3,10 +3,11 @@
   const Undertaker = req('undertaker');
   const gulp = req('gulp');
   const KarmaRegistry = req('../lib/karma.js');
+  const { stopper: karmaStopper } = req('karma');
   describe('Karma Registry default configuration and option Test', () => {
     let registry;
 
-    beforeEach(() => { registry = new KarmaRegistry('src'); });
+    before(() => { registry = new KarmaRegistry('src'); });
     it('Should have default options.', () => {
       expect(registry.opts).to.be.eql({ taskPrefix: '' });
     });
@@ -19,10 +20,8 @@
     let registry;
     let undertaker;
 
-    beforeEach(() => {
-      registry = new KarmaRegistry(
-        'src', karmaConfig, { taskPrefix: 'test.' }
-      );
+    before(() => {
+      registry = new KarmaRegistry('src', karmaConfig, { taskPrefix: 'test.' });
       undertaker = new Undertaker(registry);
     });
 
@@ -46,15 +45,17 @@
   });
 
   describe('Karma actual working test', () => {
+    const cfg = req('./karma.conf.js');
     beforeEach(() => {
       gulp.registry(new KarmaRegistry([
         'tests/fixtures/test_js/*.js',
         'tests/fixtures/browser_test/*.js',
-      ], req('./karma.conf.js')));
+      ], cfg));
     });
     afterEach(() => { gulp.removeAllListeners('error'); });
+    after(done => karmaStopper.stop(cfg, () => done()));
     describe('For server', () => {
-      before(() => { gulp.on('error', (err) => { throw err; }); });
+      beforeEach(() => { gulp.on('error', (err) => { throw err; }); });
       it('Should run properly', function (done) {
         this.timeout(10000);
         gulp.series('karma.server')(done);
@@ -65,6 +66,7 @@
     it('Should instruct server to run the test', function (done) {
       this.timeout(10000);
       const handleError = (err) => {
+        expect(err.error.message).to.be.equal('Failed Unit Tests!');
         expect(err.error.plugin).to.be.equal('gulp-karma-runner.runner');
         done();
       };
