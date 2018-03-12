@@ -52,10 +52,9 @@
         'tests/fixtures/browser_test/*.js',
       ], req('./karma.conf.js')));
     });
+    afterEach(() => { gulp.removeAllListeners('error'); });
     describe('For server', () => {
-      const raiseError = (err) => { throw err; };
-      before(() => { gulp.on('error', raiseError); });
-      after(() => { gulp.removeListener('error', raiseError); });
+      before(() => { gulp.on('error', (err) => { throw err; }); });
       it('Should run properly', (done) => {
         gulp.series('karma.server')(done);
       });
@@ -64,15 +63,15 @@
   describe('For runner', () => {
     it('Should instruct server to run the test', (done) => {
       const handleError = (err) => {
-        console.log('hello');
-        expect(err.message).to.be.equal('Failed Unit Tests!');
-        expect(err.name).to.be.equal('karma.runner');
+        expect(err.error.message).to.be.equal('Failed Unit Tests!');
+        expect(err.error.plugin).to.be.equal('gulp-karma-runner.runner');
         done();
       };
       gulp.on('error', handleError);
       gulp.series('karma.runner')((err) => {
-        if (err) { handleError(err); return; }
-        done(new Error('Should raise an error.'));
+        if (!err) {
+          done(new Error('Should raise an error.'));
+        }
       });
     });
   });
