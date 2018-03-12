@@ -65,7 +65,6 @@
     it('Should instruct server to run the test', function (done) {
       this.timeout(10000);
       const handleError = (err) => {
-        expect(err.error.message).to.be.equal('Failed Unit Tests!');
         expect(err.error.plugin).to.be.equal('gulp-karma-runner.runner');
         done();
       };
