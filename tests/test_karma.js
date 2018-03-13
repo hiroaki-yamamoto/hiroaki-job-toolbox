@@ -45,36 +45,36 @@
   });
 
   describe('Karma actual working test', () => {
-    const cfg = req('./karma.conf.js');
-    beforeEach(() => {
-      gulp.registry(new KarmaRegistry([
-        'tests/fixtures/test_js/*.js',
-        'tests/fixtures/browser_test/*.js',
-      ], cfg));
-    });
-    afterEach(() => { gulp.removeAllListeners('error'); });
     describe('For server', () => {
+      const cfg = req('./karma.conf.js');
+      before(() => {
+        gulp.registry(new KarmaRegistry([
+          'tests/fixtures/test_js/*.js',
+          'tests/fixtures/browser_test/*.js',
+        ], cfg, { taskPrefix: 'svrcheck.' }));
+      });
+      after(() => { gulp.removeAllListeners('error'); });
       beforeEach(() => { gulp.on('error', (err) => { throw err; }); });
       it('Should run properly', function (done) {
         this.timeout(10000);
-        gulp.series('karma.server')((err) => {
-          karmaStopper.stop(cfg, () => done(err));
-        });
+        gulp.series('svrcheck.karma.server')(done);
       });
     });
     describe('For runner', () => {
+      const cfg = req('./karma_server_watch.conf.js');
+      before((done) => {
+        gulp.registry(new KarmaRegistry([
+          'tests/fixtures/test_js/*.js',
+          'tests/fixtures/browser_test/*.js',
+        ], cfg, { taskPrefix: 'runcheck.' }));
+        gulp.series('runcheck.karma.server.watch')(done);
+      });
+      after((done) => { karmaStopper.stop(cfg, done); });
       it('Should instruct server to run the test', function (done) {
         this.timeout(10000);
-        const handleError = (err) => {
-          expect(err.error.message).to.match(/^The runner exit with code: /);
-          expect(err.error.plugin).to.be.equal('karma.runner');
-          done();
-        };
-        gulp.on('error', handleError);
-        gulp.series('karma.runner')((err) => {
-          if (!err) {
-            done(new Error('Should raise an error.'));
-          }
+        gulp.on('error', done);
+        gulp.series('runcheck.karma.runner')((err) => {
+          if (!err) { done(); }
         });
       });
     });
