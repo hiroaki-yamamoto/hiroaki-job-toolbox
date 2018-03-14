@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <title>Document</title>
+  <script>
+    angular.module('testApp', [])
+      .controller('testCtrl', ['$scope', function (scope) {
+        scope.model = {};
+      }]);
+  </script>
+</head>
+<body data-ng-app="testApp">
+  <form data-ng-controller="testCtrl">
+    <input type="text" data-ng-model="scope.model.text">
+    <p id="modelValue">{{ scope.model.text }}</p>
+  </form>
+</body>
+</html>
