@@ -1,14 +1,12 @@
 language: "node_js"
-compiler: g++-4.8
-env:
-  - CXX=g++-4.8
+# compiler: g++-4.8
 addons:
   chrome: stable
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libnotify-bin
+  # apt:
+  #   sources:
+  #     - ubuntu-toolchain-r-test
+  #   packages:
+  #     - libnotify-bin
 node_js:
   - "node"
 cache:
