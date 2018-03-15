@@ -14,6 +14,8 @@ node_js:
 cache:
   apt: true
   yarn: true
+before_script:
+  - $(npm bin)/webdriver-manager update
 before_deploy:
   - "echo ${TRAVIS_TAG}"
   - "perl -pe \"s/0.0.0/${TRAVIS_TAG}/\" package.json > package.json.new"
