@@ -1,14 +1,13 @@
 language: "node_js"
-sudo: false
 compiler: g++-4.8
 env:
   - CXX=g++-4.8
 addons:
+  chrome: stable
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
       - libnotify-bin
 node_js:
   - "node"
