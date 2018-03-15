@@ -12,7 +12,7 @@
     });
     afterEach(() => gulp.removeAllListeners('error'));
     it('Protractor task should actually work', function (done) {
-      this.timeout(10000);
+      this.timeout(120000);
       gulp.on('error', done);
       gulp.series('protractor')((err) => {
         if (!err) done();
