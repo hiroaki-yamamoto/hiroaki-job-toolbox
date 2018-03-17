@@ -10,6 +10,7 @@ addons:
     packages:
       # - libnotify-bin
       - python3.6
+      - python3.6-venv
 node_js:
   - "node"
 cache:
