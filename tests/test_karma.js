@@ -62,7 +62,8 @@
     });
     describe('For runner', () => {
       const cfg = req('./karma_server_watch.conf.js');
-      before((done) => {
+      before(function (done) {
+        this.timeout(10000);
         gulp.registry(new KarmaRegistry([
           'tests/fixtures/test_js/*.js',
           'tests/fixtures/browser_test/*.js',
