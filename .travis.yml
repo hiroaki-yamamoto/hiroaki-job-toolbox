@@ -16,7 +16,10 @@ cache:
   apt: true
   yarn: true
 before_script:
-  - python3.6 --version
+  - python3.6 -m venv venv
+  - . ./venv/bin/activate
+  - pip install tox nosetest
+  - deactivate
   - $(npm bin)/webdriver-manager update
 before_deploy:
   - "echo ${TRAVIS_TAG}"
