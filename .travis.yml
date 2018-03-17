@@ -16,7 +16,7 @@ cache:
   apt: true
   yarn: true
 before_script:
-  - python --version
+  - python3 --version
   - $(npm bin)/webdriver-manager update
 before_deploy:
   - "echo ${TRAVIS_TAG}"
