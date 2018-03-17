@@ -3,17 +3,20 @@ sudo: required
 # compiler: g++-4.8
 addons:
   chrome: stable
-  # apt:
-  #   sources:
-  #     - ubuntu-toolchain-r-test
-  #   packages:
-  #     - libnotify-bin
+  apt:
+    sources:
+      # - ubuntu-toolchain-r-test
+      - deadsnakes
+    packages:
+      # - libnotify-bin
+      - python3.6
 node_js:
   - "node"
 cache:
   apt: true
   yarn: true
 before_script:
+  - python --version
   - $(npm bin)/webdriver-manager update
 before_deploy:
   - "echo ${TRAVIS_TAG}"
