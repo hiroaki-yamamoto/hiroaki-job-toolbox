@@ -4,9 +4,10 @@
   chai.use(req('chai-as-promised'));
   const { expect } = chai;
   describe('Protractor Browser Operation Test', () => {
-    beforeEach(() => browser.get(
-      `file://${path.resolve(__dirname, './index.html')}`
-    ));
+    beforeEach(function () {
+      this.timeout(10000);
+      browser.get(`file://${path.resolve(__dirname, './index.html')}`);
+    });
     it('Type and check the text', () => {
       const txt = 'Test';
       element(by.model('scope.model.text')).sendKeys(txt);
