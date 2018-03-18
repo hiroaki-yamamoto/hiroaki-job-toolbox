@@ -5,10 +5,10 @@ addons:
   chrome: stable
   apt:
     sources:
-      # - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
       - deadsnakes
     packages:
-      # - libnotify-bin
+      - libnotify-bin
       - python3.6
       - python3.6-venv
 node_js:

@@ -1,3 +1,4 @@
 radon
 tox
 nose
+flake8
