@@ -23,7 +23,9 @@
     it('The task registry has the default options',
       () => expect(regist.opts).to.be.eql({
         taskPrefix: '',
-        lintCfg: path.resolve(path.join(__dirname, '../etc/eslint.json')),
+        lintCfg: {
+          configFile: path.resolve(path.join(__dirname, '../etc/eslint.json')),
+        },
         isProductionMode: helper.isProduction,
       }));
     it('The file should be actually generated.', (done) => {
@@ -56,7 +58,9 @@
       expect(regist.opts).to.be.eql({
         taskPrefix: 'prefix.',
         isProductionMode: true,
-        lintCfg: path.resolve(path.join(__dirname, '../etc/eslint.json')),
+        lintCfg: {
+          configFile: path.resolve(path.join(__dirname, '../etc/eslint.json')),
+        },
       });
     });
 
