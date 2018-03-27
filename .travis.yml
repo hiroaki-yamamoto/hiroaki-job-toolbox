@@ -1,20 +1,29 @@
 language: "node_js"
-sudo: false
-compiler: g++-4.8
-env:
-  - CXX=g++-4.8
+sudo: required
+# compiler: g++-4.8
 addons:
+  chrome: stable
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - deadsnakes
     packages:
-      - g++-4.8
       - libnotify-bin
+      - python3.6
+      - python3.6-venv
 node_js:
   - "node"
 cache:
   apt: true
   yarn: true
+  directories:
+    - ./venv
+before_script:
+  - python3.6 -m venv venv
+  - . ./venv/bin/activate
+  - pip install -r requirements.txt
+  - deactivate
+  - $(npm bin)/webdriver-manager update
 before_deploy:
   - "echo ${TRAVIS_TAG}"
   - "perl -pe \"s/0.0.0/${TRAVIS_TAG}/\" package.json > package.json.new"
