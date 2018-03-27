@@ -1,5 +1,5 @@
-import { Adder } from './test_js/add';
-import { Subtractor } from './test_js/sub';
+import { Adder } from './add';
+import { Subtractor } from './sub';
 
 export default (value) => {
   const add = new Adder();

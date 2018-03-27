@@ -10,13 +10,13 @@
     );
     const nonPrefixOutPath = path.join(outPathBase, 'static', 'test.js');
     const nonPrefixEntry = {};
-    const prefixOutPath = path.join(outPathBase, 'assets', 'test.js');
-    const prefixedEntry = {};
+    const failureOutPath = path.join(outPathBase, 'assets', 'test.js');
+    const failureEntry = {};
     before(() => {
       nonPrefixEntry[path.basename(nonPrefixOutPath, '.js')] =
-        path.resolve(path.join(__dirname, 'fixtures/test_webpack.es6'));
-      prefixedEntry[path.basename(prefixOutPath, '.js')] =
-        path.resolve(path.join(__dirname, 'fixtures/test_webpack.es6'));
+        path.resolve(path.join(__dirname, 'fixtures/test_webpack/ok.es6'));
+      failureEntry[path.basename(failureOutPath, '.js')] =
+        path.resolve(path.join(__dirname, 'fixtures/test_webpack/fail.es6'));
       g.registry(new Webpack(
         nonPrefixEntry,
         path.resolve(path.join(__dirname, 'build/test_webpack')), {
@@ -24,10 +24,10 @@
         }
       ));
       g.registry(new Webpack(
-        prefixedEntry,
+        failureEntry,
         path.resolve(path.join(__dirname, 'build/test_webpack')), {
           taskPrefix: 'assets.',
-          outPath: path.basename(path.dirname(prefixOutPath)),
+          outPath: path.basename(path.dirname(failureOutPath)),
           webPackConfigToMerge: { mode: 'development' },
         }
       ));
@@ -49,6 +49,14 @@
               done(fsErr);
             }
           }
+        });
+      });
+    });
+    describe('With task prefix and failure expectation', () => {
+      it('Should generate an output', (done) => {
+        g.on('error', () => done());
+        g.series('assets.webpack')((err) => {
+          if (!err) done(new Error('Must throw an error'));
         });
       });
     });
