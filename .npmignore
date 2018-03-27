@@ -1,3 +1,14 @@
-src
-gulpfile.coffee
-gulpfile.js
+.nyc_output
+.tox
+coverage
+*.egg-info
+*.py
+*.pyc
+*.pyo
+tests
+venv
+.eslintignore
+.eslintrc.yml
+.travis.yml
+tox.ini
+fail.tox.ini
