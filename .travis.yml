@@ -23,7 +23,12 @@ before_script:
   - . ./venv/bin/activate
   - pip install -r requirements.txt
   - deactivate
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
   - $(npm bin)/webdriver-manager update
+  - ./cc-test-reporter before-buil
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 before_deploy:
   - "echo ${TRAVIS_TAG}"
   - "perl -pe \"s/0.0.0/${TRAVIS_TAG}/\" package.json > package.json.new"
