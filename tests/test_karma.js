@@ -9,7 +9,7 @@
 
     before(() => { registry = new KarmaRegistry('src'); });
     it('Should have default options.', () => {
-      expect(registry.opts).to.be.eql({ taskPrefix: '' });
+      expect(registry.opts).to.be.eql({ taskPrefix: '', watchMode: false });
     });
     it('Should have the default configuration.', () => {
       expect(registry.config).to.be.eql(req('../etc/karma.conf.js'));
@@ -26,7 +26,8 @@
     });
 
     it('Should have expected options', () => {
-      expect(registry.opts).to.be.eql({ taskPrefix: 'test.' });
+      expect(registry.opts)
+        .to.be.eql({ taskPrefix: 'test.', watchMode: false });
     });
     it('Should have expected configuration', () => {
       expect(karmaConfig).not.to.be.deep.eql(req('../etc/karma.conf.js'));
@@ -67,8 +68,8 @@
         gulp.registry(new KarmaRegistry([
           'tests/fixtures/test_js/*.js',
           'tests/fixtures/browser_test/*.js',
-        ], cfg, { taskPrefix: 'runcheck.' }));
-        gulp.series('runcheck.karma.server.watch')(done);
+        ], cfg, { taskPrefix: 'runcheck.', watchMode: true }));
+        gulp.series('runcheck.karma.server')(done);
       });
       after((done) => { karmaStopper.stop(cfg, done); });
       it('Should instruct server to run the test', function (done) {
