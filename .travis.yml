@@ -18,16 +18,20 @@ cache:
   yarn: true
   directories:
     - ./venv
+before_install:
+  - yarn global add greenkeeper-lockfile@1
 before_script:
   - python3.6 -m venv venv
   - . ./venv/bin/activate
   - pip install -r requirements.txt
   - deactivate
+  - greenkeeper-lockfile-update
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - greenkeeper-lockfile-upload
 before_deploy:
   - "echo ${TRAVIS_TAG}"
   - "node bin/repver.js ${TRAVIS_TAG} > package.json.new"
