@@ -1,5 +1,7 @@
 # Hiroaki's toolbox
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hiroaki-yamamoto/hiroaki-job-toolbox.svg)](https://greenkeeper.io/)
+
 [![Build Status]][Build Link] [![Test Coverage]][Coverage Link] [![Maintainability]][Maintainability Link]
 
 [Build Status]: https://travis-ci.org/hiroaki-yamamoto/hiroaki-job-toolbox.svg?branch=master
