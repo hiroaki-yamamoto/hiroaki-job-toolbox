@@ -12,3 +12,4 @@ venv
 .travis.yml
 tox.ini
 fail.tox.ini
+bin/repver.js
