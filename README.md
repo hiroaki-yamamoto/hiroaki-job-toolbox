@@ -1,6 +1,9 @@
 # Hiroaki's toolbox
 
-[![Build Status]][Build Link] [![Test Coverage]][Coverage Link] [![Maintainability]][Maintainability Link]
+[![Build Status]][Build Link]
+[![Test Coverage]][Coverage Link]
+[![Maintainability]][Maintainability Link]
+[![Greenkeeper badge]][Greenkeeper link]
 
 [Build Status]: https://travis-ci.org/hiroaki-yamamoto/hiroaki-job-toolbox.svg?branch=master
 [Build Link]: https://travis-ci.org/hiroaki-yamamoto/hiroaki-job-toolbox
@@ -8,6 +11,8 @@
 [Coverage Link]: https://codeclimate.com/github/hiroaki-yamamoto/hiroaki-job-toolbox/test_coverage
 [Maintainability]: https://api.codeclimate.com/v1/badges/fe881d494b7fdc5e339e/maintainability
 [Maintainability Link]: https://codeclimate.com/github/hiroaki-yamamoto/hiroaki-job-toolbox/maintainability
+[Greenkeeper badge]: https://badges.greenkeeper.io/hiroaki-yamamoto/hiroaki-job-toolbox.svg
+[Greenkeeper link]: https://greenkeeper.io/
 
 ## What this?
 This scirpt contains scripts that I'm usually using at my work and hobby.
