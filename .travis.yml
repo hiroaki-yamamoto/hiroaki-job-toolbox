@@ -30,7 +30,7 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 before_deploy:
   - "echo ${TRAVIS_TAG}"
-  - "node bin/repver.js > package.json.new"
+  - "node bin/repver.js ${TRAVIS_TAG} > package.json.new"
   - "mv package.json.new package.json"
 deploy:
   - provider: "npm"
