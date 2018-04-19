@@ -81,7 +81,7 @@
     "sass-loader": "^7.0.0",
     "simple-process": "^1.0.14",
     "sinon": "^4.4.8",
-    "style-loader": "^0.20.3",
+    "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.2.0"
   },
