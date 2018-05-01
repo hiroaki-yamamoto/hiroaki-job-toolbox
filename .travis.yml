@@ -19,7 +19,9 @@ cache:
   directories:
     - ./venv
 before_install:
-  - yarn global add greenkeeper-lockfile@1
+  - npm i -g greenkeeper-lockfile@1
+install:
+  - npm install
 before_script:
   - python3.6 -m venv venv
   - . ./venv/bin/activate
