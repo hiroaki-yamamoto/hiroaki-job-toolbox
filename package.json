@@ -80,7 +80,7 @@
     "protractor": "^5.3.0",
     "sass-loader": "^7.0.0",
     "simple-process": "^1.0.14",
-    "sinon": "^5.0.1",
+    "sinon": "^6.0.0",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.2.0"
