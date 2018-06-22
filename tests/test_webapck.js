@@ -13,10 +13,12 @@
     const failureOutPath = path.join(outPathBase, 'assets', 'test.js');
     const failureEntry = {};
     before(() => {
-      nonPrefixEntry[path.basename(nonPrefixOutPath, '.js')] =
-        path.resolve(path.join(__dirname, 'fixtures/test_webpack/ok.es6'));
-      failureEntry[path.basename(failureOutPath, '.js')] =
-        path.resolve(path.join(__dirname, 'fixtures/test_webpack/fail.es6'));
+      nonPrefixEntry[path.basename(nonPrefixOutPath, '.js')] = path.resolve(
+        path.join(__dirname, 'fixtures/test_webpack/ok.es6')
+      );
+      failureEntry[path.basename(failureOutPath, '.js')] = path.resolve(
+        path.join(__dirname, 'fixtures/test_webpack/fail.es6')
+      );
       g.registry(new Webpack(
         nonPrefixEntry,
         path.resolve(path.join(__dirname, 'build/test_webpack')), {
