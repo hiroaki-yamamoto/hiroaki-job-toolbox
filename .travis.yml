@@ -5,10 +5,9 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-      - deadsnakes
+      - sourceline: 'ppa:deadsnakes/ppa'
     packages:
       - libnotify-bin
-      - libssl-dev
       - python3.7
       - python3.7-venv
 node_js:
