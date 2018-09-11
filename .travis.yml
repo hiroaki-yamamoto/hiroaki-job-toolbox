@@ -6,7 +6,7 @@ addons:
     packages:
       - build-essential
 python:
-  - "3.7"
+  - "python"
 cache:
   apt: true
   directories:
