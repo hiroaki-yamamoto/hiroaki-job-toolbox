@@ -1,31 +1,23 @@
-language: "node_js"
+language: "python"
 sudo: required
 addons:
   chrome: stable
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - sourceline: 'ppa:deadsnakes/ppa'
     packages:
-      - libnotify-bin
-      - python3.7
-      - python3.7-venv
-node_js:
-  - "node"
+      - build-essential
+python:
+  - "python"
 cache:
   apt: true
   directories:
     - ./venv
     - ./node_modules
 before_install:
+  - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
   - npm i -g greenkeeper-lockfile@1
-install:
-  - npm install
 before_script:
-  - python3.7 -m venv venv
-  - . ./venv/bin/activate
-  - pip install -r requirements.txt
-  - deactivate
+  - npm install
   - greenkeeper-lockfile-update
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
