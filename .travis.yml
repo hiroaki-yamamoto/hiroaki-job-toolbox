@@ -38,15 +38,15 @@ deploy:
     skip_cleanup: true
     api_key:
       secure: >-
-        DYA0cbLerw45E2aRfIL1NZT7d3T8WzHd1dEqf4Ne17J3J1kqe/eY6RlPFAfWalFRbHP3lF
-        MZzi7SxJKUvBxeSi+V0uHYwB50DMlOUKNc0T+lhbfh/N76w51qIL+MxG8CPYUmLsq2KQFs
-        e/Je6KwHXPkPAFN2aIxv2fqbMPxc+/VG/SlVRAFzIMBKIyO6Z/hLw/BkmKAqFm9ufboFBF
-        suqM/0f1Bk03p69z/8ewXHeMjFt/LcAxkd3t8mEitJTDVnCbII6czFpvjQPCNqLKxdqzzM
-        jNDMBq4DM8IROHpVuN2Fcdg3mVbfxR2CduVmkvr+hw+fVfppt2UxGPpfOyZ3dTavakVlHu
-        1bN0GvOFvYXlR1GykLp8/IVLFmJ8hZPmiIofm1OLm8JGTqPwWfQxpYQEq/eVsK+uRjTG1d
-        D+koSaosMmGs8rlHtnvKRx2skWWMPAyqympEFYfnlyQeo951IiAF0MB63KRO6sVJpM55I8
-        WhD/nWynuovx4vy5b4o9oytN3cGOPzrLlyY1JoF3G8x4XZsHjc9T04D1xuPDEqBIc5G77a
-        ImgwLXgJT4cI/5+ei7xWaW7zjwdVDe4yhlaK1JEpi+3/TGwyp+OTZRYUdazMHvNKxW9oko
-        6eekE5KAScGhfZT72ePWz2hMy3eAvsUqb30s0/KUyixp22esVWfyQ=
+        Mab65jpUfCklfFsTo2s7FEGbQ9NuD7Exmn0gDyd4/K08rWHWiCg/s7cyz5bHInqiYRURbx
+        J3Jb8bSoxVBH/PHwOHPQuchu3arHiT+rFaHITfxrLp8lY24BvitRd9EYTpdzeHVymazQFx
+        EGjvf8sYt/hwyYmNPzJ53rLQ6d2v/72SWl52fM8VyJExLjBLae/CmXgZd/W03YdZH22a2C
+        5JpIxtEv5QkpYjwYvWLoWG9Zulozz6ss1qNBA2xzH8mz9DhZQccUOl4PL1kNooln+KcS7i
+        P5j25GvIoOafzgxPDrW2lXBAYvgeNqpforhF9JuyOoBGLPHY4ZesjK5T56mXjUKMGmdpCV
+        xVUuD2twdhUYxnjkv40qloiX8nQolzO/WoYrWQkuBKOPEVLyXXbppsPM4z+Vmidr4PSOTn
+        UKMo4NOynwVqUa31BVvoIqxS2Jx/XuI1VY1UxkN7TT1w0edJdyIFseoHpPpdxziL6gMlnY
+        EP4NVNEUuEsB4lsthvBC/tKS25HOQ9PhMOX4z9G/aTHxFvmEmDFuzL7Z9tAtkxzU89lYxu
+        jcmUefFVa5hzg9B0dTKxHiFpe7wh+G/eF0Vh+pDZUxYLlZygrD8b8RBxHVHZhaoNas1a1r
+        qX1dNHk+qIkMS1Ww7/yEFcHnI1oPKD9qWV1QChwssQ3JegBwnpgXk=
     on:
       tags: true
