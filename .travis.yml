@@ -8,6 +8,7 @@ addons:
       - deadsnakes
     packages:
       - libnotify-bin
+      - libssl-dev
       - python3.7
       - python3.7-venv
 node_js:
