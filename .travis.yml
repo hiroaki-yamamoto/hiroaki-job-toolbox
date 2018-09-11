@@ -1,22 +1,24 @@
 language: "node_js"
 sudo: required
-addons:
-  chrome: stable
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - deadsnakes
-    packages:
-      - libnotify-bin
-      - libssl-dev
-      - python3.7
-      - python3.7-venv
+# addons:
+#   chrome: stable
+#   apt:
+#     sources:
+#       - ubuntu-toolchain-r-test
+#       - deadsnakes
+#     packages:
+#       - libnotify-bin
+#       - python3.7
+#       - python3.7-venv
 node_js:
   - "node"
+python:
+  - "python"
 cache:
   apt: true
   directories:
     - ./venv
+    - ./node_modules
 before_install:
   - npm i -g greenkeeper-lockfile@1
 install:
