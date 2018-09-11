@@ -10,8 +10,8 @@ python:
   - "3.7"
 cache:
   apt: true
+  pip: true
   directories:
-    - ./venv
     - ./node_modules
 before_install:
   - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
