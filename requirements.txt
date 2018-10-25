@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-colorama==0.3.9           # via radon
+colorama==0.4.0           # via radon
 filelock==3.0.9           # via tox
 flake8-polyfill==1.0.2    # via radon
 flake8==3.6.0
