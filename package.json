@@ -46,7 +46,7 @@
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.4",
     "chai": "^4.2.0",
-    "coffee-script": "^1.12.7",
+    "coffeescript": "^1.12.7",
     "coffeelint": "^2.1.0",
     "coffeelint-stylish": "^0.1.2",
     "css-loader": "^2.0.0",
