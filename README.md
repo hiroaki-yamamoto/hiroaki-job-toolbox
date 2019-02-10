@@ -11,6 +11,8 @@
 [Maintainability]: https://api.codeclimate.com/v1/badges/fe881d494b7fdc5e339e/maintainability
 [Maintainability Link]: https://codeclimate.com/github/hiroaki-yamamoto/hiroaki-job-toolbox/maintainability
 
+# NOTE: This repo is no longer mentained becuase Hiro started using npm & other managing systems
+
 ## What this?
 This scirpt contains scripts that I'm usually using at my work and hobby.
 
